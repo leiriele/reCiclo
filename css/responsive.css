@@ -1,0 +1,228 @@
+/* mobile small (240 width) ----------- */
+@media only screen and (max-width : 240px)  {
+	.header-top .haeder-top-date{
+		text-align:center;
+	}
+	.header-top-nav{
+		float:none !important;
+	}
+	.header-top-nav ul, .header-top-nav form{
+		float:none !important;
+		text-align:center;
+	}
+	.logo img {
+	  width: 100%;
+	}
+	.header-top-search > button {
+		left: 168px !important;
+	}
+	.skippr div {
+		background-size: 100% 100% !important;
+	}
+	#slider-container {
+		height: 200px;
+	}
+	.top-content .slider-area{
+		padding-bottom:40px;
+	}
+	.skippr-nav-container {
+		bottom: 0;
+		left: 65%;
+		width: 100%;
+	}
+	.skippr-nav-element-block {
+		height: 20px;
+		margin: 10px;
+		width: 30px;
+	}
+	.services .single-service {
+		margin-bottom: 20px;
+	}
+	.single-service a {
+	  padding: 0 28px !important;
+	}
+	.top-content, .services, .middle-content, .bottom-banner {
+		padding: 20px 0 !important;
+	}
+	.single-service p:nth-child(4) {
+	  left: auto !important;
+	  right: 0 !important;
+	  top: 91.7% !important;
+	}
+	.middle-content .clients ul li {
+		width: 100% !important;
+	}
+	.middle-content .clients ul li a img {
+	  width: 100% !important;
+	}
+	.mega-tabs {
+	  margin-top: 15px;
+	}
+	.nav-tabs > li {
+	  display: inline-block;
+	  width: 100%;
+	}
+	.banner-content > p:nth-child(1) {
+	  display: block !important;
+	  float: none !important;
+	  font-size: 25px !important;
+	  width:100% !important;
+	}
+	.banner-content > p:nth-child(2) {
+	  float: none !important;
+	  width:100% !important;
+	}
+	.footer-top {
+	  padding: 30px 0 !important;
+	}
+	.footer-bottom-menu, .copyright-text {
+	  text-align: center;
+	}
+}
+/* mobile small (iphone 3/4/5) ----------- */
+@media only screen and (min-width : 241px) and (max-width : 360px)  {
+	.header-top .haeder-top-date{
+		text-align:center;
+	}
+	.header-top-nav{
+		float:none !important;
+	}
+	.header-top-nav ul, .header-top-nav form{
+		float:none !important;
+		text-align:center;
+	}
+	.header-top-search > button {
+		left: 205px !important;
+	}
+	.skippr div {
+		background-size: 100% 100% !important;
+	}
+	#slider-container {
+		height: 200px;
+	}
+	.top-content .slider-area{
+		padding-bottom:40px;
+	}
+	.skippr-nav-container {
+		bottom: 0;
+		left: 65%;
+		width: 100%;
+	}
+	.skippr-nav-element-block {
+		height: 20px;
+		margin: 10px;
+		width: 30px;
+	}
+	.services .single-service {
+		margin-bottom: 20px;
+	}
+	.top-content, .services, .middle-content, .bottom-banner {
+		padding: 20px 0 !important;
+	}
+	.middle-content .clients ul li {
+		width: 48% !important;
+	}
+	.mega-tabs {
+	  margin-top: 15px;
+	}
+	.nav-tabs > li {
+	  display: inline-block;
+	  width: 100%;
+	}
+	.banner-content > p:nth-child(1) {
+	  display: block !important;
+	  float: none !important;
+	  font-size: 25px !important;
+	  width:100% !important;
+	}
+	.banner-content > p:nth-child(2) {
+	  float: none !important;
+	  width:100% !important;
+	}
+	.footer-top {
+	  padding: 30px 0 !important;
+	}
+	.footer-bottom-menu, .copyright-text {
+	  text-align: center;
+	}
+	.contact-information .col-md-9 h2, .contact-information .col-md-9 form.myform p {
+	  padding-left: 0 !important;
+	}
+	
+}
+/* mobile large (android) ----------- 
+@media only screen and (max-width : 685px)  {
+	
+}*/
+/* ipad portrait/landscape ----------- */
+@media only screen and (min-width : 768px) and (max-width : 1024px)  {
+	.col-md-4.col-sm-3.logo img {
+	  width: 100%;
+	}
+	.header-bottom .menu-bar ul {
+	  text-align: left !important;
+	}
+	.header-bottom .menu-bar ul li a {
+	  padding: 5px 4.3px !important;
+	}
+	.slider-area {
+	  margin-bottom: 20px;
+	}
+	.single-service{
+		margin-bottom:20px;
+	}
+	.single-service a {
+	  padding: 0 28px !important;
+	}
+	.single-service p:nth-child(4) {
+	  right: 0 !important;
+	  left:auto !important;
+	}
+	.banner-content > p:nth-child(1) {
+	  font-size: 25px !important;
+	  padding: 25px 5px 0 5px !important;
+	}
+	.middle-content .clients ul li {
+	  width: 18% !important;
+	}
+	.middle-content .clients ul li a img{
+		width:100%;
+	}
+	.middle-content .clients ul li {
+	  margin-bottom: -5px;
+	  margin-right: 11px;
+	  width: 18% !important;
+	}
+	.footer-top {
+	  padding: 50px 0 !important;
+	}
+	.top-content, .services, .middle-content, .bottom-banner {
+	  padding: 20px 0 !important;
+	}
+}
+/* ipad portrait ----------- 
+@media only screen and (min-device-width : 768px) and (max-device-width : 1024px) and (orientation : portrait)  {
+	
+}
+/* ipad landscape ----------- 
+@media only screen and (min-device-width : 768px) and (max-device-width : 1024px) and (orientation : landscape)  {
+
+
+}
+/* small displays ----------- 
+@media only screen and (min-width : 600px)  {
+	
+}
+
+/* 13 inch displays ----------- 
+@media only screen and (min-width : 1224px)  {
+	
+}
+/* 24 inch iMac ----------- 
+@media only screen and (min-width : 1600px) {
+	
+}
+/* 27 inch iMac ----------- 
+@media only screen and (min-width : 2400px) {
+	
+*/
