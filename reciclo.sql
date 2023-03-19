@@ -1,4 +1,4 @@
-CREATE DATABASE reciclo`;
+CREATE DATABASE `reciclo`;
 USE `reciclo`;
 
 CREATE TABLE `administrador` (
@@ -83,6 +83,8 @@ CREATE TABLE `pontocoleta` (
 
 CREATE TABLE `usuario` (
   `id_usuario` varchar(45) NOT NULL,
+  `nome` varchar(50) DEFAULT NULL,
+  `email` varchar(50) DEFAULT NULL,
   `CPF` varchar(50) DEFAULT NULL,
   `CNPJ` varchar(50) DEFAULT NULL,
   `data_nascimento` date DEFAULT NULL,
@@ -92,3 +94,27 @@ CREATE TABLE `usuario` (
   PRIMARY KEY (`id_usuario`,`Endereco_idEndereco`),
   KEY `fk_Usuario_Endereco1_idx` (`Endereco_idEndereco`)
 );
+
+CREATE TABLE `usuarios` (
+  `idusuarios` int(11) NOT NULL,
+  `name` varchar(45) NOT NULL,
+  `cpf` varchar(45) NOT NULL,
+  `cnpj` varchar(45) DEFAULT NULL,
+  `dataNasc` date NOT NULL,
+  `email` varchar(45) NOT NULL,
+  `senha` varchar(45) NOT NULL,
+  `cidade` varchar(45) NOT NULL,
+  `estado` varchar(45) NOT NULL,
+  `logradouro` varchar(45) NOT NULL,
+  `numeroN` int(11) NOT NULL,
+  `bairro` varchar(45) NOT NULL,
+  `cep` varchar(45) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Extraindo dados da tabela `usuarios`
+--
+
+INSERT INTO `usuarios` (`idusuarios`, `name`, `cpf`, `cnpj`, `dataNasc`, `email`, `senha`, `cidade`, `estado`, `logradouro`, `numeroN`, `bairro`, `cep`) VALUES
+(1, 'leiriele', '123456789', '1', '0000-00-00', 'leiriele@teste.com', '123', 'Monte Carmelo', 'MG', 'Rua A', 123, 'A', '3850000');
+
