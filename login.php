@@ -16,6 +16,7 @@ require 'conexao.php';
             font-family: Arial, Helvetica, sans-serif;
             background-image: linear-gradient(45deg, palegreen, LightGreen);
         }
+
     </style>
 </head>
 <body>
@@ -27,7 +28,9 @@ require 'conexao.php';
             <br><br>
             <input type="password" name="senha" placeholder="Senha">
             <br><br>
-            <input class="inputSubmit" type="submit" name="submit" value="Enviar">
+                <button class="inputSubmit" type="submit" name="submit" value="Enviar"> Enviar </button>
+                <br><br>
+                <button class="btn"><a href="index.php" style="color: white;">Cancelar</a></button>
         </form>
     </div>
 </body>

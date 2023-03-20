@@ -1,10 +1,10 @@
 <?php
     // isset -> serve para saber se uma variável está definida
 include_once('conexao.php');
-if(isset($_POST['update']))
+if(isset($_POST['update'])) 
 {
     $id_usuario = $_POST['id_usuario'];
-    $nome = $_POST['nome'];
+    $name = $_POST['name'];
     $email = $_POST['email'];
     $cpf = $_POST['cpf'];
     $cnpj = $_POST['cnpj'];
@@ -13,13 +13,14 @@ if(isset($_POST['update']))
     $cidade = $_POST['cidade'];
     $estado = $_POST['estado'];
     $logradouro = $_POST['logradouro'];
-    $numeroR = $_POST['numeroR'];
+    //$numeroR = $_POST['numeroR'];
     $bairro = $_POST['bairro'];
     $cep = $_POST['cep'];
     
     $sqlInsert = "UPDATE usuarios 
-    SET nome='$nome',email='$email',cpf='$cpf',cnpj='$cnpj',dataNasc='$dataNasc',senha='$senha',cidade='$cidade',estado='$estado',logradouro='$logradouro',numeroR='$numeroR',bairro='$bairro',cep='$cep'
-    WHERE id_usuarios=$id_usuarios";
+    SET name='$name',email='$email',cpf='$cpf',cnpj='$cnpj',dataNasc='$dataNasc',senha='$senha',cidade='$cidade',estado='$estado',logradouro='$logradouro',bairro='$bairro',cep='$cep'
+    WHERE idusuarios=$idusuarios";
+    
     $result = $conexao->query($sqlInsert);
     print_r($result);
 }

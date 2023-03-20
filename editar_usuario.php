@@ -1,16 +1,16 @@
 <?php
 include_once('conexao.php');
 
-if(!empty($_GET['id_usuarios']))
+if(!empty($_GET['idusuarios']))
 {
-    $id_usuarios = $_GET['id_usuarios'];
-    $sqlSelect = "SELECT * FROM usuarios WHERE id_usuarios=$id_usuarios";
+    $idusuarios = $_GET['idusuarios'];
+    $sqlSelect = "SELECT * FROM usuarios WHERE idusuarios=$idusuarios";
     $result = $conexao->query($sqlSelect);
     if($result->num_rows > 0)
     {
         while($user_data = mysqli_fetch_assoc($result))
         {
-            $nome = $_POST['nome'];
+            $name = $_POST['name'];
             $email = $_POST['email'];
             $cpf = $_POST['cpf'];
             $cnpj = $_POST['cnpj'];
@@ -19,7 +19,7 @@ if(!empty($_GET['id_usuarios']))
             $cidade = $_POST['cidade'];
             $estado = $_POST['estado'];
             $logradouro = $_POST['logradouro'];
-            $numeroR = $_POST['numeroR'];
+            //$numeroR = $_POST['numeroR'];
             $bairro = $_POST['bairro'];
             $cep = $_POST['cep'];
         }
@@ -44,7 +44,7 @@ else
     <style>
         body{
             font-family: Arial, Helvetica, sans-serif;
-            background-image: linear-gradient(to right, green, white));
+            background-image: linear-gradient(to right, green, white);
 }
 .box{
     color: white;
@@ -123,18 +123,28 @@ legend{
                 <legend><b>Cadastro Usuario</b></legend>
                 <br>
                 <div class="inputBox">
-                    <input type="text" name="nome" id="nome" class="inputUser" required>
-                    <label for="nome" class="labelInput">Nome completo</label>
+                    <input type="text" name="name" id="name" class="inputUser" required>
+                    <label for="name" class="labelInput">Nome completo</label>
                 </div>
                 <br>
                 <div class="inputBox">
                     <input type="text" name="email" id="email" class="inputUser" required>
                     <label for="email" class="labelInput">Email</label>
                 </div>
-                <br>
-                <label for="dataNasc"><b>Data de Nascimento:</b></label>
-                <input type="date" name="dataNasc" id="dataNasc" required>
-                <br><br>
+                                    <br>
+                    <div class="inputBox">
+                        <input type="text" name="cpf" id="cpf" class="inputUser" required>
+                        <label for="cpf" class="labelInput">CPF</label>
+                    </div>
+                    <br>
+                    <div class="inputBox">
+                        <input type="text" name="cnpj" id="cnpj" class="inputUser" required>
+                        <label for="cnpj" class="labelInput">CNPJ</label>
+                    </div>
+                     <br>
+                        <label for="dataNasc"><b>Data de Nascimento:</b></label>
+                        <input type="date" name="dataNasc" id="dataNasc" required>
+                     <br><br>
                 <div class="inputBox">
                     <input type="password" name="senha" id="senha" class="inputUser" required>
                     <label for="senha" class="labelInput">Senha</label>
@@ -155,10 +165,10 @@ legend{
                    <input type="text" name="logradouro" id="logradouro" class="inputUser" required> 
                    <label for="logradouro" class="labelInput"><b>Logradouro</b></label> </div>
                    <br>
-                   <div class="inputBox">                  
-                       <input type="text" name="numeroR" id="numeroR" class="inputUser" required>   
+                   <!--<div class="inputBox">                  
+                       <input type="number" name="numeroR" id="numeroR" class="inputUser" required>   
                        <label for="numeroR" class="labelInput"><b>Numero</b></label>
-                   </div>
+                   </div> -->
                    <br>
                    <div class="inputBox">                   
                        <input type="text" name="bairro" id="bairro" class="inputUser" required>      
