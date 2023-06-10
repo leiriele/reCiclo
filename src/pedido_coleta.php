@@ -75,6 +75,27 @@ if ($result->num_rows > 0) {
 </head>
 
 <body>
+<header>
+    <div class="header-top">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-4 col-xs-12 col-sm-5 haeder-top-date">
+         
+        </div>
+
+        <div class="col-md-4 col-xs-12 col-sm-2 text-center">
+          <a href="index.php"><img src="images/reCiclo-1.png" alt="" /></a>
+        </div>
+        <div class="col-md-4 col-xs-12 col-sm-5">
+          <div class="header-top-nav">
+            <ul class="list-unstyled">      
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
 
   <!-- ======= Mobile nav toggle button ======= -->
   <i class="bi bi-list mobile-nav-toggle d-xl-none"></i>
@@ -95,16 +116,15 @@ if ($result->num_rows > 0) {
           <a href="#" class="twitter"><i class="bx bxl-twitter"></i></a>
           <a href="#" class="facebook"><i class="bx bxl-facebook"></i></a>
           <a href="#" class="instagram"><i class="bx bxl-instagram"></i></a>
-          <a href="#" class="google-plus"><i class="bx bxl-skype"></i></a>
           <a href="#" class="linkedin"><i class="bx bxl-linkedin"></i></a>
         </div>
       </div>
 
       <nav id="navbar" class="nav-menu navbar">
-        <ul>
+       <ul>
           <li><a href="perfil_cliente.php" class="nav-link scrollto active"><i class="bx bx-home"></i> <span>Inicio</span></a></li>
-          <li><a href="#resume" class="nav-link scrollto"><i class="bx bx-file-blank"></i> <span>Resume</span></a></li>
-          <li><a href="pedido_coleta.php" class="nav-link scrollto"><i class="bx bx-user"></i> <span>Pedido de coleta</span></a></li>
+          <li><a href="resume.php" class="nav-link scrollto"><i class="bx bx-file-blank"></i> <span>Pedidos de coleta</span></a></li>
+          <li><a href="pedido_coleta.php" class="nav-link scrollto"><i class="bx bx-user"></i> <span>Solicitar coleta</span></a></li>
           <li><a href="pontos_coleta.php" class="nav-link scrollto"><i class="bx bx-book-content"></i> <span>Ponto de coleta</span></a></li>
           <li><a href="calculadora.php" class="nav-link scrollto"><i class="bx bx-calculator"></i> <span>Calculadora Impacto</span></a></li>
           <li><a href="editar_perfil.php" class="nav-link scrollto"><i class="bx bx-cog"></i> <span>Configurações</span></a></li>
@@ -120,10 +140,10 @@ if ($result->num_rows > 0) {
       <div class="container">
 
         <div class="d-flex justify-content-between align-items-center">
-          <h2>PERFIL COLABORADOR</h2>
+           <h2>Solicitar coleta</h2>
           <ol>
-            <li><a href="index.php">Inicio</a></li>
-            <li>Usuario</li>
+            <li><a href="perfil_cliente.php">Inicio</a></li>
+           <li><a href="index.php?logout=true">Sair</a></li>
           </ol>
         </div>
 

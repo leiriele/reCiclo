@@ -1,12 +1,14 @@
 <!DOCTYPE HTML>
-<html lang="en-US">
-<head>
-	<meta charset="utf-8">
-    <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>RECICLO</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-	
-    <link rel="shortcut icon" type="image/x-icon" href="images/favicon.ico">
+	<html lang="pt-BR">
+
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="x-ua-compatible" content="ie=edge">
+		<title>reCiclo</title>
+
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+
+		<link rel="shortcut icon" type="image/x-icon" href="images/icn.ico">
     
     <link href='https://fonts.googleapis.com/css?family=Raleway:400,600' rel='stylesheet' type='text/css'>
 	<link href='https://fonts.googleapis.com/css?family=Open+Sans:400,400italic,600' rel='stylesheet' type='text/css'>
@@ -19,86 +21,46 @@
 	<link rel="stylesheet" href="css/responsive.css" />
 	<link rel="stylesheet" href="css/main.css">
 	<script src="js/vendor/modernizr-2.8.3.min.js"></script>
-	
-	<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?sensor=false"></script>    
-	<script type="text/javascript">
-		// When the window has finished loading create our google map below
-		google.maps.event.addDomListener(window, 'load', init);
-	
-		function init() {
-			// Basic options for a simple Google Map
-			// For more options see: https://developers.google.com/maps/documentation/javascript/reference#MapOptions
-			var mapOptions = {
-				// How zoomed in you want the map to start at (always required)
-				zoom: 11,
-
-				// The latitude and longitude to center the map (always required)
-				center: new google.maps.LatLng(-19.912998, -43.940933), // Minas
-
-				// How you would like to style the map. 
-				// This is where you would paste any style found on Snazzy Maps.
-				styles: [{"featureType":"all","elementType":"all","stylers":[{"weight":"5.37"},{"gamma":"0.71"},{"lightness":"18"},{"saturation":"0"}]},{"featureType":"administrative","elementType":"labels.text.fill","stylers":[{"color":"#444444"}]},{"featureType":"landscape","elementType":"all","stylers":[{"color":"#f2f2f2"}]},{"featureType":"poi","elementType":"all","stylers":[{"visibility":"off"}]},{"featureType":"road","elementType":"all","stylers":[{"saturation":-100},{"lightness":45}]},{"featureType":"road.highway","elementType":"all","stylers":[{"visibility":"simplified"}]},{"featureType":"road.arterial","elementType":"labels.icon","stylers":[{"visibility":"off"}]},{"featureType":"transit","elementType":"all","stylers":[{"visibility":"off"}]},{"featureType":"water","elementType":"all","stylers":[{"color":"#66bc41"},{"visibility":"on"}]}]
-			};
-
-			// Get the HTML DOM element that will contain your map 
-			// We are using a div with id="map" seen below in the <body>
-			var mapElement = document.getElementById('map');
-
-			// Create the Google Map using our element and options defined above
-			var map = new google.maps.Map(mapElement, mapOptions);
-
-			// Let's also add a marker while we're at it
-			var marker = new google.maps.Marker({
-				position: new google.maps.LatLng(-19.912998, -43.940933),
-				map: map,
-				title: 'UAI!'
-			});
-		}
-	</script>
-	
+		
 </head>
-<body>
-</head>
-<body>
+
+<body>	
 	<header>
-		<div class="header-top">
-			<div class="container">
-				<div class="row">
-					<div class="col-md-4 col-xs-12 col-sm-5 haeder-top-date">
-						<p>Segunda, 13 março 2023</p>
-					</div>
-					<div class="col-md-8 col-xs-12 col-sm-7">
-						<div class="header-top-nav">
-							<ul class="list-unstyled">
-								<li><a href="page.html">Sobre nós</a></li>
-								<li><a href="page.html">Noticias</a></li>
-								<li><a href="page.html">Contato</a></li>
-							</ul>
-							<form action="" class="header-top-search">
-								<input type="text" name="" />
-								<button><i class="fa fa-search"></i></button>
-							</form>
-						</div>
+	<div class="header-top">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-4 col-xs-12 col-sm-5 haeder-top-date">
+					<?php setlocale(LC_TIME, 'pt_BR.utf8'); ?>
+					<?php echo strftime('%e de %B, %Y'); ?>
+				</div>
+
+				<div class="col-md-4 col-xs-12 col-sm-2 text-center">
+					<a href="index.php"><img src="images/reCiclo-1.png" alt="" /></a>
+				</div>
+				<div class="col-md-4 col-xs-12 col-sm-5">
+					<div class="header-top-nav">
+						<ul class="list-unstyled">
+							<li><a href="cadastro_pt1.html">CADASTRO</a></li>
+							<li><a href="login.php" id="myBtn">LOGIN</a></li>
+						</ul>
 					</div>
 				</div>
 			</div>
-		</div><!--Header Top Ends-->
+		</div>
+	</div><!--Header Top Ends-->
 		
-		<div class="header-bottom">
-			<div class="container">
-				<div class="row">
-					<div class="col-md-4 col-sm-3 logo">
-						<a href="index.html"><img src="images/logo-1.png" alt="" /></a>
-					</div>
-					<div class="col-md-8 col-sm-9 menu-bar">
-						<ul class="list-unstyled" id="menu">
-							<li><a href="index.html" class="active">Inicio</a></li>
-							<li><a href="page.html">Pontos de Coleta</a></li>
-							<li><a href="page.html">Pedido de Coleta</a></li>
-							<li><a href="page.html">Notícias</a></li>
-							<li><a href="contact.html">Contato</a></li>
-						</ul>
-					</div>
+			<div class="header-bottom">
+				<div class="container">
+					<div class="row">
+						<div class="col-md-4 col-sm-3 logo"></div>
+						<div class="col-md-8 col-sm-9 menu-bar">
+							<ul class="list-unstyled" id="menu">
+								<li><a href="index.php" class="active">Inicio</a></li>
+								<li><a href="consultaTotal.php">Pedido de Coleta</a></li>
+								<li><a href="page.html">Notícias</a></li>
+								<li><a href="contact.html">Contato</a></li>
+							</ul>
+						</div>
 				</div>
 			</div>
 		</div><!-- Header Nav Ends -->
@@ -111,8 +73,7 @@
 			<div class="row">
 				<div class="col-md-12 col-sm-12 col-xs-12">
 					<h1>Contato</h1>
-					<p>But you can get great hand and start reflecting on the type of a life time results at home.</p>
-					<p><a href="">Inicio</a> <i class="fa fa-angle-right"></i> <a href="">Contato</a> <i class="fa fa-angle-right"></i> <a href="">Página atual</a></p>
+					<p>Faça parte do time dos eco-warriors! Recicle, reutilize e arrase na preservação do meio ambiente. Vamos transformar o mundo em um lugar mais verde e cheio de atitude!</p>
 				</div>
 			</div>
 		</div>
@@ -122,20 +83,21 @@
 			<div class="row">
 				<div class="col-md-12 col-sm-12 col-xs-12">
 					<h2>Quem somos</h2>
-					<p>Sestibulum id faucibus ante, Mauris nec dolor venenatis, tristique turpis.</p>
+					<p>Reciclo: seu guia divertido para desvendar os pontos de coleta e descobrir os tesouros dos resíduos.</p>
 				</div>
 				<div class="col-md-4 col-sm-4 col-xs-12">
-					<img src="images/wwr1.jpg" alt="" />
+					<img src="images/projeto3.jpg" alt="" />
 				</div>
 				<div class="col-md-4 col-sm-4  col-xs-12">
-					<img src="images/wwr2.jpg" alt="" />
+					<img src="images/reciclagem.png" alt="" />
 				</div>
 				<div class="col-md-4 col-sm-4 col-xs-12">
-					<img src="images/wwr3.jpg" alt="" />
+					<img src="images/r1.jpg" alt="" />
 				</div>
 				<div class="col-md-12 col-sm-12 col-xs-12">
-					<p>Fusce placerat mollis tellus ut porta. Cras efficitur consequat massa sit amet hendrerit. Cras posuere mi quis leo commodo egestas. Sed porta pulvinar nisl, quis mollis risus ultrices vitae. Morbi interdum, leo at pulvinar tempor, magna quam venenatis dolor, vitae luctus erat arcu at erat. Vestibulum non semper ex.</p>
-					<p>Nunc egestas dui et sagittis rutrum. Nullam cursus dignissim lacinia. Suspendisse pulvinar posuere consectetur. Sed vitae eros viverra, vestibulum erat a, efficitur dolor.</p>
+					<p>Nós somos um grupo de entusiastas e defensores da sustentabilidade e do meio ambiente. Nosso objetivo é promover a conscientização sobre a importância da reciclagem, da coleta seletiva e de práticas sustentáveis. Através deste projeto, buscamos incentivar a participação ativa de indivíduos e comunidades na preservação do nosso planeta, fornecendo informações, recursos e soluções práticas para um estilo de vida mais sustentável. Juntos, podemos fazer a diferença e construir um futuro melhor para as gerações futuras.</p>
+
+					<p>Além disso, acreditamos que a responsabilidade ambiental não é apenas uma tarefa individual, mas uma missão coletiva. Buscamos colaborar com empresas, instituições e governos para promover políticas e práticas sustentáveis ​​em larga escala. Nosso compromisso vai além da conscientização e educação, trabalhamos ativamente para criar parcerias e projetos que impulsionem a economia circular, a redução de resíduos e a adoção de energias renováveis. Juntos, estamos construindo um movimento em prol de um mundo mais verde e equilibrado, onde a harmonia entre o ser humano e a natureza é prioridade.</p>
 				</div>
 			</div>
 		</div>
@@ -153,20 +115,20 @@
 						</li>
 						<li>
 							<i class="fa fa-phone"></i>
-							<span>Telefone:</span>
-							<p>417-623-9847 417-598-8523</p>
+							<span>Telefone/Whatsapp:</span>
+							<p>+55 349XXXX-XXXX</p>
 						</li>
 						<li>
 							<i class="fa fa-envelope"></i>
 							<span>Email:</span>
 							<p>
-								<a href="mailto:info@yoursite.com">info@yoursite.com</a>
+								<a href="mailto:info@yoursite.com">reCiclo@gmail.com</a>
 							</p>
 						</li>
 						<li>
 							<i class="fa fa-clock-o"></i>
 							<span>Horário de funcionamento:</span>
-							<p>Segunda-feira 9:00am-10:00am<br/>Sabádo 8:00pm-9:00pm</p>
+							<p>Segunda-feira 8:00am-19:00pm<br/>Sabádo 8:00am-13:00pm</p>
 						</li>
 					</ul>
 				</div>
@@ -185,51 +147,7 @@
 			</div>
 		</div>
 	</section><!-- Contact Information ends here -->
-	<section class="contact-map"> 
-		<div id="map"></div>
-	</section>
-	
-	<!-- Footer Starts -->
-	<section class="footer">
-		<div class="footer-top">
-			<div class="container">
-				<div class="row">
-					<div class="col-md-3 col-sm-6 col-xs-12 testimonial footer-widget">
-						<h2>Client Testimonial</h2>
-						<p>tristique turpis. Vestibulum id faucibus ante, Mauris nec dolor venenatis, tristique turpis. Vestibulum id faucibus ante consequat leo a, tristique turpis. Vestibulum id faucibus ante.<br />
-						<span>JON DEO, CEO</span></p>
-					</div>
-					
-					<div class="col-md-4 col-sm-6 col-xs-12 footer-widget recent-posts">
-						<h2>Notícias recentes</h2>
-						<ul class="list-unstyled">
-							<li><a href=""><i class="fa fa-angle-double-right"></i> Lorem ipsum dolor sit amet?</a></li>
-							<li><a href=""><i class="fa fa-angle-double-right"></i> Consectetur adipiscing elit?</a></li>
-							<li><a href=""><i class="fa fa-angle-double-right"></i> Vivamus auctor suscipit quam vel dictum?</a></li>
-							<li><a href=""><i class="fa fa-angle-double-right"></i> Phasellus sollicitudin ac ligula nec viverra?</a></li>
-							<li><a href=""><i class="fa fa-angle-double-right"></i> Pellentesque turpis nisl?</a></li>
-						</ul>
-					</div>
-					<div class="col-md-2 col-sm-6 col-xs-12 social-button footer-widget">
-						<h2>Rede Social</h2>
-						<ul class="list-unstyled">
-							<li><a href=""><i class="fa fa-facebook"></i> Facebook</a></li>
-							<li><a href=""><i class="fa fa-twitter"></i> Twitter</a></li>
-							<li><a href=""><i class="fa fa-flickr"></i> Flickr</a></li>
-							<li><a href=""><i class="fa fa-rss"></i> RSS</a></li>
-						</ul>
-					</div>
-					<div class="col-md-3 col-sm-6 col-xs-12 footer-widget subscribe">
-						<h2>Obtenha as atualizações mais recentes</h2>
-						<p>Donec ac erat quis magna sapien eget nisl ac erat quis magna.</p>
-						<form action="">
-							<input type="text" name="" placeholder="Nome" />
-							<input type="text" name="" placeholder="Email" />
-							<input type="submit" class="pull-right" value="Junte-se a nós" />
-						</form>
-					</div>
-				</div>
-			</div>
+
 <!-- Footer Starts -->
 	<section class="footer">
 		<div class="footer-top">
@@ -237,32 +155,30 @@
 				<div class="row">
 					<div class="col-md-3 col-sm-6 col-xs-12 testimonial footer-widget">
 						<h2>Depoimento de clientes</h2>
-						<p>tristique turpis. Vestibulum id faucibus ante, Mauris nec dolor venenatis, tristique turpis. Vestibulum id faucibus ante consequat leo a, tristique turpis. Vestibulum id faucibus ante.<br />
-						<span>JON DEO, CEO</span></p>
+						<p>"Estou impressionado com a página reCiclo! É incrível como ela facilita todo o processo de descarte correto e consciente. Agora consigo encontrar facilmente os pontos de coleta próximos a mim e contribuir para um ambiente mais sustentável."<br />
+						<span>Jefferson Dias, MG</span></p>
 					</div>
 					
-					<div class="col-md-4 col-sm-6 col-xs-12 footer-widget recent-posts">
-						<h2>Notícias Recentes</h2>
-						<ul class="list-unstyled">
-							<li><a href=""><i class="fa fa-angle-double-right"></i> Lorem ipsum dolor sit amet?</a></li>
-							<li><a href=""><i class="fa fa-angle-double-right"></i> Consectetur adipiscing elit?</a></li>
-							<li><a href=""><i class="fa fa-angle-double-right"></i> Vivamus auctor suscipit quam vel dictum?</a></li>
-							<li><a href=""><i class="fa fa-angle-double-right"></i> Phasellus sollicitudin ac ligula nec viverra?</a></li>
-							<li><a href=""><i class="fa fa-angle-double-right"></i> Pellentesque turpis nisl?</a></li>
-						</ul>
-					</div>
+			<div class="col-md-4 col-sm-6 col-xs-12 footer-widget recent-posts">
+				<h2>Notícias Recentes</h2>
+				<ul class="list-unstyled">
+					<li><a href="noticia1.html"><i class="fa fa-angle-double-right"></i> Novas tecnologias na reciclagem de plásticos</a></li>
+					<li><a href="noticia2.html"><i class="fa fa-angle-double-right"></i> Como a coleta seletiva contribui para a preservação do meio ambiente</a></li>
+					<li><a href="noticia3.html"><i class="fa fa-angle-double-right"></i> Iniciativas de reciclagem em empresas ganham destaque</a></li>
+					<li><a href="noticia4.html"><i class="fa fa-angle-double-right"></i> O papel do consumidor na cadeia de reciclagem</a></li>
+				</ul>
+			</div>
 					<div class="col-md-2 col-sm-6 col-xs-12 social-button footer-widget">
 						<h2>Rede Social</h2>
 						<ul class="list-unstyled">
 							<li><a href=""><i class="fa fa-instagram"></i>Instagram</a></li>
 							<li><a href=""><i class="fa fa-facebook"></i> Facebook</a></li>
 							<li><a href=""><i class="fa fa-twitter"></i> Twitter</a></li>
-							<li><a href=""><i class="fa fa-flickr"></i> Flickr</a></li>
 						</ul>
 					</div>
 					<div class="col-md-3 col-sm-6 col-xs-12 footer-widget subscribe">
 						<h2>Receba notícias</h2>
-						<p>Donec ac erat quis magna sapien eget nisl ac erat quis magna.</p>
+						<p>Fique por dentro das novidades eco-friendly e receba dicas sustentáveis diretamente na sua caixa de entrada. Junte-se a nós e vamos construir um futuro mais verde juntos!</p>
 						<form action="">
 							<input type="text" name="" placeholder="Name" />
 							<input type="text" name="" placeholder="Email" />
@@ -280,7 +196,6 @@
 						<div class="footer-bottom-menu">
 							<ul class="list-unstyled">
 							<li><a href="index.html" class="active">Inicio</a></li>
-							<li><a href="page.html">Pontos de Coleta</a></li>
 							<li><a href="page.html">Pedido de Coleta</a></li>
 							<li><a href="page.html">Notícias</a></li>
 							<li><a href="contact.html">Contato</a></li>

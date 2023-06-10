@@ -2,6 +2,14 @@
 session_start();
 include_once('conexao.php');
 
+//clicou no link "Sair"
+if (isset($_GET['logout'])) {
+    session_destroy();
+    //Redireciona index
+    header("Location: index.php");
+    exit;
+}
+
 if (isset($_SESSION['idusuarios'])) {
   $idusuarios = $_SESSION['idusuarios'];
 
@@ -76,6 +84,27 @@ if ($result->num_rows > 0) {
 </head>
 
 <body>
+<header>
+    <div class="header-top">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-4 col-xs-12 col-sm-5 haeder-top-date">
+         
+        </div>
+
+        <div class="col-md-4 col-xs-12 col-sm-2 text-center">
+          <a href="index.php"><img src="images/reCiclo-1.png" alt="" /></a>
+        </div>
+        <div class="col-md-4 col-xs-12 col-sm-5">
+          <div class="header-top-nav">
+            <ul class="list-unstyled">      
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
 
   <!-- ======= Mobile nav toggle button ======= -->
   <i class="bi bi-list mobile-nav-toggle d-xl-none"></i>
@@ -96,7 +125,6 @@ if ($result->num_rows > 0) {
           <a href="#" class="twitter"><i class="bx bxl-twitter"></i></a>
           <a href="#" class="facebook"><i class="bx bxl-facebook"></i></a>
           <a href="#" class="instagram"><i class="bx bxl-instagram"></i></a>
-          <a href="#" class="google-plus"><i class="bx bxl-skype"></i></a>
           <a href="#" class="linkedin"><i class="bx bxl-linkedin"></i></a>
         </div>
       </div>
@@ -104,8 +132,8 @@ if ($result->num_rows > 0) {
       <nav id="navbar" class="nav-menu navbar">
        <ul>
           <li><a href="perfil_cliente.php" class="nav-link scrollto active"><i class="bx bx-home"></i> <span>Inicio</span></a></li>
-          <li><a href="#resume" class="nav-link scrollto"><i class="bx bx-file-blank"></i> <span>Resume</span></a></li>
-          <li><a href="pedido_coleta.php" class="nav-link scrollto"><i class="bx bx-user"></i> <span>Pedido de coleta</span></a></li>
+          <li><a href="#resume" class="nav-link scrollto"><i class="bx bx-file-blank"></i> <span>Pedidos de coleta</span></a></li>
+          <li><a href="pedido_coleta.php" class="nav-link scrollto"><i class="bx bx-user"></i> <span>Solicitar coleta</span></a></li>
           <li><a href="pontos_coleta.php" class="nav-link scrollto"><i class="bx bx-book-content"></i> <span>Ponto de coleta</span></a></li>
           <li><a href="calculadora.php" class="nav-link scrollto"><i class="bx bx-calculator"></i> <span>Calculadora Impacto</span></a></li>
           <li><a href="editar_perfil.php" class="nav-link scrollto"><i class="bx bx-cog"></i> <span>Configurações</span></a></li>
@@ -121,10 +149,10 @@ if ($result->num_rows > 0) {
       <div class="container">
 
         <div class="d-flex justify-content-between align-items-center">
-          <h2>PERFIL CLIENTE</h2>
+           <h2>Calculadora de impacto </h2>
           <ol>
-            <li><a href="index.php">Inicio</a></li>
-            <li>Colaborador</li>
+            <li><a href="perfil_cliente.php">Inicio</a></li>
+           <li><a href="index.php?logout=true">Sair</a></li>
           </ol>
         </div>
 
@@ -170,57 +198,42 @@ if ($result->num_rows > 0) {
 </div>
 </body>
 
-
-
 <?php
 //Impacto = (Quantidade de plástico x Energia necessária para produzir 1 kg de plástico x Fator de emissão de CO2 da energia utilizada x Tempo de decomposição do plástico no meio ambiente) / 1000
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    // Obtém as quantidades de plástico, metal e vidro
     $plastico = $_POST['plastico'];
     $metal = $_POST['metal'];
     $vidro = $_POST['vidro'];
     $papel = $_POST['papel'];
 
+    $energiaPlastico = 50; 
+    $fatorCO2Plastico = 3.14; 
+    $tempoDecomposicaoPlastico = 450; 
 
-    // Define os valores necessários para o cálculo do impacto do plástico
-    $energiaPlastico = 50; // Energia necessária para produzir 1 kg de plástico (em MJ)
-    $fatorCO2Plastico = 3.14; // Fator de emissão de CO2 da energia utilizada para produzir 1 kg de plástico
-    $tempoDecomposicaoPlastico = 450; // Tempo de decomposição do plástico no meio ambiente (em anos)
+    $energiaMetal = 200; 
+    $fatorCO2Metal = 7.84; 
+    $tempoDecomposicaoMetal = 500;
 
-    // Define os valores necessários para o cálculo do impacto do metal
-    $energiaMetal = 200; // Energia necessária para produzir 1 kg de metal (em MJ)
-    $fatorCO2Metal = 7.84; // Fator de emissão de CO2 da energia utilizada para produzir 1 kg de metal
-    $tempoDecomposicaoMetal = 500; // Tempo de decomposição do metal no meio ambiente (em anos)
+    $energiaVidro = 100; 
+    $fatorCO2Vidro = 2.36; 
+    $tempoDecomposicaoVidro = 4000;
 
-    // Define os valores necessários para o cálculo do impacto do vidro
-    $energiaVidro = 100; // Energia necessária para produzir 1 kg de vidro (em MJ)
-    $fatorCO2Vidro = 2.36; // Fator de emissão de CO2 da energia utilizada para produzir 1 kg de vidro
-    $tempoDecomposicaoVidro = 4000; // Tempo de decomposição do vidro no meio ambiente (em anos)
+    $energiaPapel = 10; 
+    $fatorCO2Papel = 0.8; 
+    $tempoDecomposicaoPapel = 2;
 
-    // Define os valores necessários para o cálculo do impacto do papel
-    $energiaPapel = 10; // Energia necessária para produzir 1 kg de papel (em kWh)
-    $fatorCO2Papel = 0.8; // Fator de emissão de CO2 da energia utilizada para produzir 1 kg de papel
-    $tempoDecomposicaoPapel = 2; // Tempo de decomposição do papel no meio ambiente (em anos)
-    // Quantidade de papel em kg
-
-
-
-
-
-    // Calcula o impacto do plástico
+    //Calculo dos impactos
     $impactoPlastico = ($plastico * $energiaPlastico * $fatorCO2Plastico * $tempoDecomposicaoPlastico) / 1000;
 
-    // Calcula o impacto do metal
     $impactoMetal = ($metal * $energiaMetal * $fatorCO2Metal * $tempoDecomposicaoMetal) / 1000;
 
-    // Calcula o impacto do vidro
     $impactoVidro = ($vidro * $energiaVidro * $fatorCO2Vidro * $tempoDecomposicaoVidro) / 1000;
 
-    // Cálculo do impacto do papel
+
     $impactoPapel = ($papel * $energiaPapel * $fatorCO2Papel * $tempoDecomposicaoPapel) / 1000;
 
-   // Exibe os resultados
+   // Resultados
     echo "<h3>Impacto Ambiental:</h3>";
     echo "<ul>";
     echo "<li>Impacto do plástico: " . number_format($impactoPlastico, 2) . " toneladas de CO2</li>";

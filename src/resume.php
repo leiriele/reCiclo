@@ -2,11 +2,21 @@
 session_start();
 include_once('conexao.php');
 
+//clicou no link "Sair"
+if (isset($_GET['logout'])) {
+    session_destroy();
+    //Redireciona index
+    header("Location: index.php");
+    exit;
+}
+
 if (!isset($_SESSION['idusuarios']) || empty($_SESSION['idusuarios'])) {
     header('Location: login.php'); 
     exit; 
 }
 
+$sql = "SELECT * FROM pedidos";
+$result = $conexao->query($sql);
 
 if (isset($_SESSION['idusuarios'])) {
   $idusuarios = $_SESSION['idusuarios'];
@@ -83,6 +93,29 @@ if ($result->num_rows > 0) {
 </head>
 
 <body>
+<header>
+    <div class="header-top">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-4 col-xs-12 col-sm-5 haeder-top-date">
+         
+        </div>
+
+        <div class="col-md-4 col-xs-12 col-sm-2 text-center">
+          <a href="index.php"><img src="images/reCiclo-1.png" alt="" /></a>
+        </div>
+        <div class="col-md-4 col-xs-12 col-sm-5">
+          <div class="header-top-nav">
+            <ul class="list-unstyled">      
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<body>
 
   <!-- ======= Mobile nav toggle button ======= -->
   <i class="bi bi-list mobile-nav-toggle d-xl-none"></i>
@@ -102,7 +135,6 @@ if ($result->num_rows > 0) {
           <a href="#" class="twitter"><i class="bx bxl-twitter"></i></a>
           <a href="#" class="facebook"><i class="bx bxl-facebook"></i></a>
           <a href="#" class="instagram"><i class="bx bxl-instagram"></i></a>
-          <a href="#" class="google-plus"><i class="bx bxl-skype"></i></a>
           <a href="#" class="linkedin"><i class="bx bxl-linkedin"></i></a>
         </div>
       </div>
@@ -110,8 +142,8 @@ if ($result->num_rows > 0) {
       <nav id="navbar" class="nav-menu navbar">
        <ul>
           <li><a href="perfil_cliente.php" class="nav-link scrollto active"><i class="bx bx-home"></i> <span>Inicio</span></a></li>
-          <li><a href="resume.php" class="nav-link scrollto"><i class="bx bx-file-blank"></i> <span>Resume</span></a></li>
-          <li><a href="pedido_coleta.php" class="nav-link scrollto"><i class="bx bx-user"></i> <span>Pedido de coleta</span></a></li>
+          <li><a href="resume.php" class="nav-link scrollto"><i class="bx bx-file-blank"></i> <span>Pedidos de coleta</span></a></li>
+          <li><a href="pedido_coleta.php" class="nav-link scrollto"><i class="bx bx-user"></i> <span>Solicitar coleta</span></a></li>
           <li><a href="pontos_coleta.php" class="nav-link scrollto"><i class="bx bx-book-content"></i> <span>Ponto de coleta</span></a></li>
           <li><a href="calculadora.php" class="nav-link scrollto"><i class="bx bx-calculator"></i> <span>Calculadora Impacto</span></a></li>
           <li><a href="editar_perfil.php" class="nav-link scrollto"><i class="bx bx-cog"></i> <span>Configurações</span></a></li>
@@ -121,121 +153,82 @@ if ($result->num_rows > 0) {
   </header><!-- End Header -->
 
   <main id="main">
-
-    <!-- ======= Breadcrumbs ======= -->
+<!-- End Breadcrumbs -->
     <section id="breadcrumbs" class="breadcrumbs">
       <div class="container">
 
         <div class="d-flex justify-content-between align-items-center">
-           <h2>PERFIL COLABORADOR</h2>
+           <h2>Pedidos de coleta</h2>
           <ol>
-            <li><a href="index.php">Inicio</a></li>
-            <li>Colaborador</li>
+            <li><a href="perfil_cliente.php">Inicio</a></li>
+           <li><a href="index.php?logout=true">Sair</a></li>
           </ol>
         </div>
 
       </div>
     </section><!-- End Breadcrumbs -->
+
 <section>
-    <table class="table table-bordered">
-        <thead class="thead-dark">
-            <tr>
-                <th>ID Pedido</th>
-                <th>Nome</th>
-                <th>Endereço</th>
-                <th>Produto</th>
-                <th>Quantidade</th>
-                <th>Descrição</th>
-                <th>Telefone</th>
-                <th>Mídia</th>
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <div class="table-responsive">
+                    <table class="table table-bordered">
+                        <thead class="thead-dark">
+                            <tr>
+                                <th>Nome</th>
+                                <th>Produto</th>
+                                <th>Quantidade (aprox. kg)</th>
+                                <th>Descrição</th>
+                                <th>Midia</th>
                             </tr>
-        </thead>
-        <tbody>
-            <?php
-            $result = null; 
+                        </thead>
+                        <tbody>
+                            <?php
+                            $sql = "SELECT * FROM pedidos";
+                            $result = $conexao->query($sql);
 
-            if (isset($_SESSION['idusuarios'])) {
-                $id_usuario = $_SESSION['idusuarios'];
-
-                $stmt = $conexao->prepare("SELECT p.*, u.* FROM pedidos p JOIN usuarios u ON p.idusuarios = u.idusuarios WHERE p.idusuarios = ?");
-                $stmt->bind_param("i", $id_usuario);
-                $stmt->execute();
-                $result = $stmt->get_result();
-
-                if ($result !== null && $result->num_rows > 0) {
-                    while ($row = $result->fetch_assoc()) {
-                        $id_pedido = $row['id_pedido'];
-                        $nome = $row['nome'];
-                        $endereco = $row['endereco'];
-                        $produto = $row['produto'];
-                        $quantidade = $row['quantidade'];
-                        $descricao = $row['descricao'];
-                        $telefone = $row['telefone'];
-                        $midia = $row['midia'];
-
-                        echo "<tr>";
-                        echo "<td>$id_pedido</td>";
-                        echo "<td>$nome</td>";
-                        echo "<td>$endereco</td>";
-                        echo "<td>$produto</td>";
-                        echo "<td>$quantidade</td>";
-                        echo "<td>$descricao</td>";
-                        echo "<td>$telefone</td>";
-                        echo "<td>$midia</td>";
-                        echo "<td><button class='btn btn-primary' onclick='solicitar($id_pedido)'>Solicitar</button></td>";
-                        echo " <td><button class='btn btn-danger' onclick='excluir($id_pedido)'>Excluir</button></td>";
-                        echo "</tr>";
-                    }
-                } else {
-                    echo "<tr><td colspan='9'>Nenhum pedido de coleta encontrado para este usuário.</td></tr>";
-                }
-
-                $stmt->close();
-                $conexao->close();
-            } else {
-                echo "<tr><td colspan='9'>Usuário não encontrado.</td></tr>";
-                exit;
-            }
-            ?>
-        </tbody>
-    </table>
+                            if ($result->num_rows > 0) {
+                                while ($row = $result->fetch_assoc()) {
+                                    echo "<tr>";
+                                    echo "<td>" . $row['nome'] . "</td>";
+                                    echo "<td>" . $row['produto'] . "</td>";
+                                    echo "<td>" . $row['quantidade'] . "</td>";
+                                    echo "<td>" . $row['descricao'] . "</td>";
+                                    echo "<td><img src='data:image/jpeg;base64," . base64_encode($row['midia']) . "' width='100' height='100'></td>";
+                                  
+                                    echo "<td><button class='btn btn-primary' onclick='solicitar(" . $row['id_pedido'] . ")'>Solicitar</button></td>";
+                                    echo "</tr>";
+                                }
+                            } else {
+                                echo "<tr><td colspan='4'>Nenhum pedido encontrado.</td></tr>";
+                            }
+                            ?>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
 </section>
 
-<script>
-    function solicitar(idPedido) { // AJAX
-        var xhr = new XMLHttpRequest();
-        xhr.open('GET', 'processar_pedido.php', true);
-        xhr.onreadystatechange = function() {
-            if (xhr.readyState === 4 && xhr.status === 200) {
-                // Redirecionar para a página do WhatsApp
-                var telefone = xhr.responseText; // Número de telefone retornado pelo servidor
-                var mensagem = encodeURIComponent("Olá, estou interessado no seu pedido no reCiclo.");
-                window.location.href = "https://api.whatsapp.com/send?phone=" + telefone + "&text=" + mensagem;
-            }
-        };
-        xhr.send();
-    }
-</script>
-<script>
-    function excluir(idPedido) {
-        if (confirm("Tem certeza de que deseja excluir este pedido?")) {
-            var xhr = new XMLHttpRequest();
-            xhr.open('GET', 'excluir_pedido.php?id=' + idPedido, true);
-            xhr.onreadystatechange = function() {
-                if (xhr.readyState === 4 && xhr.status === 200) {
-                    var response = xhr.responseText;
-                    if (response === "success") {
-                        alert("Pedido excluído com sucesso.");
-                        window.location.reload();
-                    } else {
-                        alert("Falha ao excluir o pedido. Por favor, tente novamente mais tarde.");
-                    }
-                }
-            };
-            xhr.send();
+
+  <script>
+    function solicitar(idPedido) {
+      var xhr = new XMLHttpRequest();
+      xhr.open('GET', 'processar_pedido.php?id=' + idPedido, true);
+      xhr.onreadystatechange = function() {
+        if (xhr.readyState === 4 && xhr.status === 200) {
+          var telefone = xhr.responseText;
+          var mensagem = encodeURIComponent("Olá, estou interessado no seu pedido no reCiclo.");
+          window.location.href = "https://api.whatsapp.com/send?phone=" + telefone + "&text=" + mensagem;
         }
+      };
+      xhr.send();
     }
-</script>
+
+  </script>
+
 
   </main>
 
