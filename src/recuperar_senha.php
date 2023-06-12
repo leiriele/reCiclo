@@ -1,3 +1,4 @@
+<!-- Atualiza a senha caso o usuario 'Esqueceu senha' -->
 <?php
 require 'conexao.php';
 $mensagem = '';
@@ -9,19 +10,25 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $sql = "SELECT * FROM usuarios WHERE email = '$email'";
     $result = mysqli_query($conexao, $sql);
 
-    if (mysqli_num_rows($result) > 0) {
-        
-        $sql = "UPDATE usuarios SET senha = '$novaSenha' WHERE email = '$email'";
-        mysqli_query($conexao, $sql);
+if (mysqli_num_rows($result) > 0) {
+    $sql = "UPDATE usuarios SET senha = '$novaSenha' WHERE email = '$email'";
+    mysqli_query($conexao, $sql);
 
-        $mensagem = 'Senha atualizada com sucesso!';
+    $mensagem = 'Senha atualizada com sucesso!';
 
-        echo '<script>exibirMensagemSucesso();</script>';
-    } else {
-        $mensagem = 'O email fornecido não está registrado. Por favor, verifique e tente novamente.';
+    echo '<script>
+        alert("Senha atualizada com sucesso!");
+        window.location.href = "login.php";
+    </script>';
+} else {
+    $mensagem = 'O email fornecido não está registrado. Por favor, verifique e tente novamente.';
 
-        echo '<script>exibirErro();</script>';
-    }
+    echo '<script>
+        alert("O email fornecido não está registrado. Por favor, verifique e tente novamente.");
+        window.location.href = "recuperar_senha.php";
+    </script>';
+}
+
 }
 ?>
 

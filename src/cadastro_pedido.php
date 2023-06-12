@@ -18,19 +18,14 @@ if (isset($_POST['submit'])) {
 	$stmt->bind_param("iisssisss", $id_pedido, $idusuarios, $nome, $endereco, $produto, $quantidade, $descricao, $telefone, $midia);
     $stmt->execute();
 
-    // Verifica se a inserção foi bem sucedida
     if ($stmt->affected_rows > 0) {
-        // Exibe uma mensagem de sucesso antes de redirecionar para a página perfil_cliente.php
-        
         echo "<script>alert('Pedido de coleta enviado com sucesso!');</script>";
 
         header('Location: perfil_cliente.php');
         exit;
     } else {
-        // Exibe uma mensagem de erro caso ocorra um problema na inserção
         echo "<script>alert('Ocorreu um erro ao enviar o pedido de coleta. Por favor, tente novamente mais tarde.');</script>";
     }
-
     $stmt->close();
     $conexao->close();
 }

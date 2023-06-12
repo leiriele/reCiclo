@@ -1,75 +1,71 @@
+<!-- Pagina informativa referente a 'Noticias' -->
 <!DOCTYPE HTML>
 <html lang="pt-BR">
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="x-ua-compatible" content="ie=edge">
-        <title>reCiclo</title>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="x-ua-compatible" content="ie=edge">
+	<title>reCiclo</title>
 
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <link rel="shortcut icon" type="image/x-icon" href="images/icn.ico">
-    
-    <link href='https://fonts.googleapis.com/css?family=Raleway:400,600' rel='stylesheet' type='text/css'>
+	<link rel="shortcut icon" type="image/x-icon" href="images/icn.ico">
+	
+	<link href='https://fonts.googleapis.com/css?family=Raleway:400,600' rel='stylesheet' type='text/css'>
 	<link href='https://fonts.googleapis.com/css?family=Open+Sans:400,400italic,600' rel='stylesheet' type='text/css'>
 	
-	<link rel="stylesheet" href="css/bootstrap.min.css" />
+
+	<!-- Google Fonts -->
+	<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Roboto:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+	<!-- Vendor CSS Files -->
+	<link rel="stylesheet" href="assets/vendor/bootstrap/css/bootstrap.min.css" />
+	<link rel="stylesheet" href="assets/vendor/bootstrap-icons/bootstrap-icons.css" />
+	<link rel="stylesheet" href="assets/vendor/boxicons/css/boxicons.min.css" />
+	<link rel="stylesheet" href="assets/vendor/glightbox/css/glightbox.min.css" />
+	<link rel="stylesheet" href="assets/vendor/swiper/swiper-bundle.min.css" />
+	<link rel="stylesheet" href="assets/vendor/aos/aos.css" />
+
 	<link rel="stylesheet" href="css/font-awesome.min.css" />
-	<link rel="stylesheet" href="css/normalize.css">
-	<link rel="stylesheet" href="css/jquery.skippr.css">
+	<link rel="stylesheet" href="css/normalize.css" />
+	<link rel="stylesheet" href="css/jquery.skippr.css" />
 	<link rel="stylesheet" href="css/slicknav.min.css" />
 	<link rel="stylesheet" href="css/responsive.css" />
-	<link rel="stylesheet" href="css/main.css">
+	<link rel="stylesheet" href="css/main.css" />
+
 	<script src="js/vendor/modernizr-2.8.3.min.js"></script>
+
+	<!-- Template Main CSS File -->
+	<link href="assets/css/style.css" rel="stylesheet">
 	
 </head>
 <body>
-<body>	
-<header>
-	<div class="header-top">
-		<div class="container">
-			<div class="row">
-				<div class="col-md-4 col-xs-12 col-sm-5 haeder-top-date">
-					<?php setlocale(LC_TIME, 'pt_BR.utf8'); ?>
-					<?php echo strftime('%e de %B, %Y'); ?>
-				</div>
 
-				<div class="col-md-4 col-xs-12 col-sm-2 text-center">
-					<a href="index.php"><img src="images/reCiclo-1.png" alt="" /></a>
-				</div>
-				<div class="col-md-4 col-xs-12 col-sm-5">
-					<div class="header-top-nav">
-						<ul class="list-unstyled">
-							<li><a href="cadastro_pt1.html">CADASTRO</a></li>
-							<li><a href="login.php" id="myBtn">LOGIN</a></li>
-						</ul>
-					</div>
-				</div>
-			</div>
+	<!-- ======= Header ======= -->
+	<header id="header" class="d-flex align-items-center">
+		<div class="container d-flex align-items-center justify-content-between">
+
+			<h1><a href="index.html"><img src="images/reCiclo-1.png" alt="" /><span></span></a></h1>
+
+			<nav id="navbar" class="navbar">
+				
+				<ul class="list-unstyled">
+					<li><a class="nav-link scrollto active" href="index.php">Inicio</a></li>
+					<li><a class="nav-link scrollto" href="consultaTotal.php">Pedido de coleta</a></li>
+					<li><a class="nav-link scrollto" href="page.html">Noticias</a></li>
+					<li><a class="nav-link scrollto " href="contact.html">Sobre</a></li>
+					<li><a href="login.php" id="myBtn">LOGIN</a></li>
+				</ul>
+				<i class="bi bi-list mobile-nav-toggle"></i>
+			</nav><!-- .navbar -->
+
 		</div>
-	</div><!--Header Top Ends-->
-		
-			<div class="header-bottom">
-				<div class="container">
-					<div class="row">
-						<div class="col-md-4 col-sm-3 logo"></div>
-						<div class="col-md-8 col-sm-9 menu-bar">
-							<ul class="list-unstyled" id="menu">
-								<li><a href="index.php" class="active">Inicio</a></li>
-								<li><a href="consultaTotal.php">Pedido de Coleta</a></li>
-								<li><a href="page.html">Notícias</a></li>
-								<li><a href="contact.html">Contato</a></li>
-							</ul>
-						</div>
-				</div>
-			</div>
-		</div><!-- Header Nav Ends -->
-	</header><!-- Header Top Ends Here -->
+	</header><!-- End Header -->
 	
 	<section class="page-title">
 		<div class="container">
 			<div class="row">
 				<div class="col-md-12">
-					<h1>Notícias</h1>
+					<h2>Notícias</h2>
 					<p>Seu guia divertido para desvendar os pontos de coleta e descobrir os tesouros dos resíduos.</p>
 				</div>
 			</div>
@@ -83,66 +79,34 @@
 					<p class="hexagon" style="background:#8CC152;"><i class="fa fa-globe"></i><span></span></p>
 					<h3>Ecopontos</h3>
 					<p>Descubra os ecopontos, o seu refúgio para transformar resíduos em oportunidades sustentáveis.</p>
-					 <a class="ec-color" href="#"><span class="fa fa-circle"></span> <span class="fa fa-circle"></span> <span class="fa fa-circle"></span></a>
+					<a class="ec-color" href="page1.html"><span class="fa fa-circle"></span> <span class="fa fa-circle"></span> <span class="fa fa-circle"></span></a>
 				</div>
 				<div class="col-md-3 col-sm-6">
 					<p class="hexagon" style="background:#808080;"><i class="fa fa-globe"></i><span></span></p>
 					<h3>Lista resíduos</h3>
 					<h2>Comuns</h2>
 					<p>Saiba como descartar de forma consciente e responsável os resíduos do dia a dia, contribuindo para um ambiente mais limpo e saudáve</p>
-					<a class="ec-color" href="#"><span class="fa fa-circle"></span> <span class="fa fa-circle"></span> <span class="fa fa-circle"></span></a>
+					<a class="ec-color" href="page2.html"><span class="fa fa-circle"></span> <span class="fa fa-circle"></span> <span class="fa fa-circle"></span></a>
 				</div>
 				<div class="col-md-3 col-sm-6">
 					<p class="hexagon" style="background:#0028f0;"><i class="fa fa-globe"></i><span></span></p>
 					<h3>Lista resíduos</h3>
 					<h2>Recicláveis</h2>
 					<p>Transforme seu lixo em recursos preciosos! Conheça os resíduos recicláveis e faça parte da cadeia de reciclagem, promovendo a sustentabilidade</p>
-					<a class="ec-color" href="#"><span class="fa fa-circle"></span> <span class="fa fa-circle"></span> <span class="fa fa-circle"></span></a>
+					<a class="ec-color" href="page3.html"><span class="fa fa-circle"></span> <span class="fa fa-circle"></span> <span class="fa fa-circle"></span></a>
 				</div>
 				<div class="col-md-3 col-sm-6">
 					<p class="hexagon" style="background:#f00000;"><i class="fa fa-globe"></i><span></span></p>
 					<h3>Lista resíduos</h3>
 					<h2>Especial</h2>
 					<p>Descubra como descartar corretamente itens que demandam um tratamento diferenciado, preservando a saúde e o meio ambiente.</p>
-					<a class="ec-color" href="#"><span class="fa fa-circle"></span> <span class="fa fa-circle"></span> <span class="fa fa-circle"></span></a>
+					<a class="ec-color" href="page4.html"><span class="fa fa-circle"></span> <span class="fa fa-circle"></span> <span class="fa fa-circle"></span></a>
 				</div>
 			</div>
 		</div>
 	</section><!-- Services Ends Here -->
 	
-	<section class="parallax-section">
-		<div class="container">
-			<div class="row">
-				<div class="col-md-6 col-sm-6">
-					<div class="fluid-width-video-wrapper">
-						<iframe src="https://player.vimeo.com/video/93350761" height="281" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
-					</div>
-				</div>
-				<div class="col-md-6 col-sm-6">
-					<h3>Quem nós somos</h3>
-					<p>Nós somos um grupo de entusiastas e defensores da sustentabilidade e do meio ambiente. Nosso objetivo é promover a conscientização sobre a importância da reciclagem, da coleta seletiva e de práticas sustentáveis. Através deste projeto, buscamos incentivar a participação ativa de indivíduos e comunidades na preservação do nosso planeta, fornecendo informações, recursos e soluções práticas para um estilo de vida mais sustentável. Juntos, podemos fazer a diferença e construir um futuro melhor para as gerações futuras.</p>
-					
-					<p><a href="">Descubra mais</a> <a href="">Agende agora</a></p>
-				</div>
-				
-			</div>
-		</div>
-	</section><!-- Parallax Section Ends here -->
-	
-	<!--<section class="team-section">
-		<div class="container">
-			<div class="row">
-				<div class="col-md-3">
-					
-				</div>
-				<div class="col-md-3"></div>
-				<div class="col-md-3"></div>
-				<div class="col-md-3"></div>
-			</div>
-		</div>
-	</section>-->
-	
-<!-- Footer Starts -->
+	<!-- Footer Starts -->
 	<section class="footer">
 		<div class="footer-top">
 			<div class="container">
@@ -150,93 +114,93 @@
 					<div class="col-md-3 col-sm-6 col-xs-12 testimonial footer-widget">
 						<h2>Depoimento de clientes</h2>
 						<p>"Estou impressionado com a página reCiclo! É incrível como ela facilita todo o processo de descarte correto e consciente. Agora consigo encontrar facilmente os pontos de coleta próximos a mim e contribuir para um ambiente mais sustentável."<br />
-						<span>Jefferson Dias, MG</span></p>
-					</div>
-					
-			<div class="col-md-4 col-sm-6 col-xs-12 footer-widget recent-posts">
-				<h2>Notícias Recentes</h2>
-				<ul class="list-unstyled">
-					<li><a href="noticia1.html"><i class="fa fa-angle-double-right"></i> Novas tecnologias na reciclagem de plásticos</a></li>
-					<li><a href="noticia2.html"><i class="fa fa-angle-double-right"></i> Como a coleta seletiva contribui para a preservação do meio ambiente</a></li>
-					<li><a href="noticia3.html"><i class="fa fa-angle-double-right"></i> Iniciativas de reciclagem em empresas ganham destaque</a></li>
-					<li><a href="noticia4.html"><i class="fa fa-angle-double-right"></i> O papel do consumidor na cadeia de reciclagem</a></li>
-				</ul>
-			</div>
-					<div class="col-md-2 col-sm-6 col-xs-12 social-button footer-widget">
-						<h2>Rede Social</h2>
-						<ul class="list-unstyled">
-							<li><a href=""><i class="fa fa-instagram"></i>Instagram</a></li>
-							<li><a href=""><i class="fa fa-facebook"></i> Facebook</a></li>
-							<li><a href=""><i class="fa fa-twitter"></i> Twitter</a></li>
-						</ul>
-					</div>
-					<div class="col-md-3 col-sm-6 col-xs-12 footer-widget subscribe">
-						<h2>Receba notícias</h2>
-						<p>Fique por dentro das novidades eco-friendly e receba dicas sustentáveis diretamente na sua caixa de entrada. Junte-se a nós e vamos construir um futuro mais verde juntos!</p>
-						<form action="">
-							<input type="text" name="" placeholder="Name" />
-							<input type="text" name="" placeholder="Email" />
-							<input type="submit" class="pull-right" value="cadastrar" />
-						</form>
-					</div>
-				</div>
-			</div>
-		</div><!-- Footer Top Ends -->
-		
-		<div class="footer-bottom">
-			<div class="container">
-				<div class="row">
-					<div class="col-md-8 col-xs-12">
-						<div class="footer-bottom-menu">
+							<span>Jefferson Dias, MG</span></p>
+						</div>
+						
+						<div class="col-md-4 col-sm-6 col-xs-12 footer-widget recent-posts">
+							<h2>Notícias Recentes</h2>
 							<ul class="list-unstyled">
-							<li><a href="index.html" class="active">Inicio</a></li>
-							<li><a href="page.html">Pedido de Coleta</a></li>
-							<li><a href="page.html">Notícias</a></li>
-							<li><a href="contact.html">Contato</a></li>
+								<li><a href="noticia1.html"><i class="fa fa-angle-double-right"></i> Novas tecnologias na reciclagem de plásticos</a></li>
+								<li><a href="noticia2.html"><i class="fa fa-angle-double-right"></i> Como a coleta seletiva contribui para a preservação do meio ambiente</a></li>
+								<li><a href="noticia3.html"><i class="fa fa-angle-double-right"></i> Iniciativas de reciclagem em empresas ganham destaque</a></li>
+								<li><a href="noticia4.html"><i class="fa fa-angle-double-right"></i> O papel do consumidor na cadeia de reciclagem</a></li>
 							</ul>
 						</div>
-						<div class="copyright-text">
-							<p>Copyright © 2016 Ecology Theme. All right reserved</p>
+						<div class="col-md-2 col-sm-6 col-xs-12 social-button footer-widget">
+							<h2>Rede Social</h2>
+							<ul class="list-unstyled">
+								<li><a href=""><i class="fa fa-instagram"></i>Instagram</a></li>
+								<li><a href=""><i class="fa fa-facebook"></i> Facebook</a></li>
+								<li><a href=""><i class="fa fa-twitter"></i> Twitter</a></li>
+							</ul>
+						</div>
+						<div class="col-md-3 col-sm-6 col-xs-12 footer-widget subscribe">
+							<h2>Receba notícias</h2>
+							<p>Fique por dentro das novidades eco-friendly e receba dicas sustentáveis diretamente na sua caixa de entrada. Junte-se a nós e vamos construir um futuro mais verde juntos!</p>
+							<form action="receba_noticias.php" class="myform" method="post">
+								<input type="text" required="" name="nome" placeholder="Nome" />
+								<input type="text" required="" name="email" placeholder="Email" />
+								<input type="submit" name="submit" class="pull-right" value="Cadastrar" />
+							</form>
 						</div>
 					</div>
-					<div class="col-md-4 col-xs-12">
-						<a href="#" class="scrollToTop"><i class="fa fa-arrow-up"></i></a>
+				</div>
+			</div><!-- Footer Top Ends -->
+			
+			<div class="footer-bottom">
+				<div class="container">
+					<div class="row">
+						<div class="col-md-8 col-xs-12">
+							<div class="footer-bottom-menu">
+								<ul class="list-unstyled">
+									<li><a href="index.html" class="active">Inicio</a></li>
+									<li><a href="page.html">Pedido de Coleta</a></li>
+									<li><a href="page.html">Notícias</a></li>
+									<li><a href="contact.html">Contato</a></li>
+								</ul>
+							</div>
+							<div class="copyright-text">
+								<p>Copyright © 2016 Ecology Theme. All right reserved</p>
+							</div>
+						</div>
+						<div class="col-md-4 col-xs-12">
+							<a href="page.html" class="scrollToTop"><i class="fa fa-arrow-up"></i></a>
+						</div>
 					</div>
 				</div>
 			</div>
-		</div>
-	</section>
-	<script src="js/jquery.min.js"></script>
-	<script src="js/jquery.skippr.min.js"></script>
-	<script type="text/javascript">
-		$(document).ready(function(){
-			$("#theTarget").skippr({
-			transition: 'slide',
-            speed: 1000,
-            easing: 'easeOutQuart',
-            navType: 'block',
-            childrenElementType: 'div',
-            arrows: false,
-            autoPlay: false,
-            autoPlayDuration: 5000,
-            keyboardOnAlways: true,
-            hidePrevious: false
- 
-      });
-		});
-	</script>
-	<script src="js/plugins.js"></script>
-	<script src="js/main.js"></script>
-	<script src="js/bootstrap.min.js"></script>
-	<script src="js/jquery.slicknav.min.js"></script>
-	<script>
-		$(function(){
-			$('#menu').slicknav();
-		});
-	</script>
-	
-</body>
-</html>
+		</section>
+		<script src="js/jquery.min.js"></script>
+		<script src="js/jquery.skippr.min.js"></script>
+		<script type="text/javascript">
+			$(document).ready(function(){
+				$("#theTarget").skippr({
+					transition: 'slide',
+					speed: 1000,
+					easing: 'easeOutQuart',
+					navType: 'block',
+					childrenElementType: 'div',
+					arrows: false,
+					autoPlay: false,
+					autoPlayDuration: 5000,
+					keyboardOnAlways: true,
+					hidePrevious: false
+					
+				});
+			});
+		</script>
+		<script src="js/plugins.js"></script>
+		<script src="js/main.js"></script>
+		<script src="js/bootstrap.min.js"></script>
+		<script src="js/jquery.slicknav.min.js"></script>
+		<script>
+			$(function(){
+				$('#menu').slicknav();
+			});
+		</script>
+		
+	</body>
+	</html>
 
 
 

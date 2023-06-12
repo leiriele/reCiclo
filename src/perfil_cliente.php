@@ -1,48 +1,6 @@
+<!--//RESUMO DOS PEDIDOS DO PROPRIO USUARIO exibidos apos login na aba "Pedidos Coleta" -->
 <?php
-session_start();
-include_once('conexao.php');
-
-//clicou no link "Sair"
-if (isset($_GET['logout'])) {
-  session_destroy();
-    //Redireciona index
-  header("Location: index.php");
-  exit;
-}
-
-if (isset($_SESSION['idusuarios'])) {
-  $idusuarios = $_SESSION['idusuarios'];
-
-  $stmt = $conexao->prepare("SELECT * FROM usuarios WHERE idusuarios = ?");
-  $stmt->bind_param("i", $idusuarios);
-  $stmt->execute();
-  $result = $stmt->get_result();
-
-
-  if ($result->num_rows > 0) {
-    $usuarios = $result->fetch_assoc();
-    
-    if ($usuarios !== null) {
-      $idusuarios = $usuarios['idusuarios'];
-      $name = $usuarios['name'];
-      $email = $usuarios['email'];
-      $cpf = $usuarios['cpf'];
-      $dataNasc = $usuarios['dataNasc'];
-      $cidade = $usuarios['cidade'];
-      $estado = $usuarios['estado'];
-      $logradouro = $usuarios['logradouro'];
-      $numeroN = $usuarios['numeroN'];
-      $bairro = $usuarios['bairro'];
-      $cep = $usuarios['cep'];
-    } else {
-      echo "Dados do usuário não encontrados.";
-      exit;
-    }
-  } else {
-    echo "Usuário não encontrado.";
-    exit;
-  }
-}
+include_once('verificar_sessao.php');
 ?>
 
 <!DOCTYPE html>
@@ -83,17 +41,13 @@ if (isset($_SESSION['idusuarios'])) {
   ======================================================== -->
 </head>
 
-
-
 <body>
   <header>
     <div class="header-top">
       <div class="container">
         <div class="row">
           <div class="col-md-4 col-xs-12 col-sm-5 haeder-top-date">
-           
           </div>
-
           <div class="col-md-4 col-xs-12 col-sm-2 text-center">
             <a href="index.php"><img src="images/reCiclo-1.png" alt="" /></a>
           </div>
@@ -111,11 +65,9 @@ if (isset($_SESSION['idusuarios'])) {
   <!-- ======= Mobile nav toggle button ======= -->
   <i class="bi bi-list mobile-nav-toggle d-xl-none"></i>
 
-  <!-- ======= Header ======= -->
+  <!-- ======= Header USUARIO ======= -->
   <header id="header">
-
     <div class="d-flex flex-column">
-
       <div class="profile">
         <img src="assets/img/profile-img.jpg" alt="" class="img-fluid rounded-circle">
         <h1 class="text-light">
@@ -149,62 +101,21 @@ if (isset($_SESSION['idusuarios'])) {
   <!-- ======= Breadcrumbs ======= -->
   <section id="breadcrumbs" class="breadcrumbs">
     <div class="container">
-
       <div class="d-flex justify-content-between align-items-center">
-       <h2>Bem vindo(a), </h2>
+       <h2>Bem vindo<span>,</span> <?php echo $usuarios['name'];?>!</h2>
        <ol>
         <li><a href="perfil_cliente.php">Inicio</a></li>
         <li><a href="index.php?logout=true">Sair</a></li>
       </ol>
     </div>
-
   </div>
+
 </section><!-- End Breadcrumbs -->
-
-<!-- ======= Portfolio Details Section ======= -->
-<section id="portfolio-details" class="portfolio-details">
-  <div class="container">
-
-    <div class="row gy-4">
-
-      <div class="col-lg-8">
-        <div class="portfolio-details-slider swiper">
-          <div class="swiper-wrapper align-items-center">
-
-            <div class="swiper-slide">
-              <img src="assets/img/portfolio/portfolio-details-1.jpg" alt="">
-            </div>
-
-            <div class="swiper-slide">
-              <img src="assets/img/portfolio/portfolio-details-2.jpg" alt="">
-            </div>
-
-            <div class="swiper-slide">
-              <img src="assets/img/portfolio/portfolio-details-3.jpg" alt="">
-            </div>
-
-          </div>
-
-          <div class="swiper-pagination"></div>
-        </div>
-      </div>
-
-      <div class="col-lg-4">
-        <div class="portfolio-info">
-          <h3>Informações de Projeto</h3>
-          <ul>
-            <li><strong>Categoria</strong>: Recicla+</li>
-            <li><strong>Cidade</strong>: Monte Carmelo</li>
-            <li><strong>Projeto inicio</strong>: 01 March, 2020</li>
-            <li><strong>Projeto URL</strong>: <a href="#">www.example.com</a></li>
-          </ul>
-        </div>
-      </div>
-    </div>
-
-  </div>
-</section><!-- End Portfolio Details Section -->
+<div>
+  <p>Bem-vindo ao seu incrível perfil! Aqui, você tem acesso exclusivo aos pedidos de coleta que você fez. Prepare-se para mergulhar em uma aventura de reciclagem e salvar o mundo!</p>
+</div>
 <section>
+
   <h2>Meus Pedidos</h2>
   <table class="table table-bordered">
     <thead class="thead-dark">
@@ -266,7 +177,6 @@ if (isset($_SESSION['idusuarios'])) {
 </section>
 
 <script>
-
   function excluirPedido(idPedido) {
     if (confirm("Tem certeza de que deseja excluir este pedido?")) {
       var xhr = new XMLHttpRequest();

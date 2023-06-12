@@ -1,40 +1,6 @@
+<!-- Atualizar ou deletar perfil de usuario -->
 <?php
-session_start();
-include_once('conexao.php');
-
-if (isset($_SESSION['idusuarios'])) {
-  $idusuarios = $_SESSION['idusuarios'];
-
-  $stmt = $conexao->prepare("SELECT * FROM usuarios WHERE idusuarios = ?");
-  $stmt->bind_param("i", $idusuarios);
-  $stmt->execute();
-  $result = $stmt->get_result();
-
-
-if ($result->num_rows > 0) {
-    $usuarios = $result->fetch_assoc();
-    
-    if ($usuarios !== null) {
-        $idusuarios = $usuarios['idusuarios'];
-        $name = $usuarios['name'];
-        $email = $usuarios['email'];
-        $cpf = $usuarios['cpf'];
-        $dataNasc = $usuarios['dataNasc'];
-        $cidade = $usuarios['cidade'];
-        $estado = $usuarios['estado'];
-        $logradouro = $usuarios['logradouro'];
-        $numeroN = $usuarios['numeroN'];
-        $bairro = $usuarios['bairro'];
-        $cep = $usuarios['cep'];
-    } else {
-        echo "Dados do usuário não encontrados.";
-        exit;
-    }
-} else {
-    echo "Usuário não encontrado.";
-    exit;
-}
-}
+include_once('verificar_sessao.php');
 ?>
 
 <!DOCTYPE html>
@@ -76,27 +42,27 @@ if ($result->num_rows > 0) {
 </head>
 
 <body>
-<header>
+  <header>
     <div class="header-top">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-4 col-xs-12 col-sm-5 haeder-top-date">
-         
-        </div>
+      <div class="container">
+        <div class="row">
+          <div class="col-md-4 col-xs-12 col-sm-5 haeder-top-date">
 
-        <div class="col-md-4 col-xs-12 col-sm-2 text-center">
-          <a href="index.php"><img src="images/reCiclo-1.png" alt="" /></a>
-        </div>
-        <div class="col-md-4 col-xs-12 col-sm-5">
-          <div class="header-top-nav">
-            <ul class="list-unstyled">      
-            </ul>
+          </div>
+
+          <div class="col-md-4 col-xs-12 col-sm-2 text-center">
+            <a href="index.php"><img src="images/reCiclo-1.png" alt="" /></a>
+          </div>
+          <div class="col-md-4 col-xs-12 col-sm-5">
+            <div class="header-top-nav">
+              <ul class="list-unstyled">      
+              </ul>
+            </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
-</header>
+  </header>
 
   <!-- ======= Mobile nav toggle button ======= -->
   <i class="bi bi-list mobile-nav-toggle d-xl-none"></i>
@@ -107,10 +73,10 @@ if ($result->num_rows > 0) {
 
       <div class="profile">
         <img src="assets/img/profile-img.jpg" alt="" class="img-fluid rounded-circle">
-       <h1 class="text-light">
-        <a href="index.html" value="<?php echo $usuarios['name']; ?>">
-          <?php echo $usuarios['name']; ?>
-        </a>
+        <h1 class="text-light">
+          <a href="index.html" value="<?php echo $usuarios['name']; ?>">
+            <?php echo $usuarios['name']; ?>
+          </a>
         </h1>
 
         <div class="social-links mt-3 text-center">
@@ -123,33 +89,33 @@ if ($result->num_rows > 0) {
 
       <nav id="navbar" class="nav-menu navbar">
        <ul>
-          <li><a href="perfil_cliente.php" class="nav-link scrollto active"><i class="bx bx-home"></i> <span>Inicio</span></a></li>
-          <li><a href="#resume" class="nav-link scrollto"><i class="bx bx-file-blank"></i> <span>Pedidos de coleta</span></a></li>
-          <li><a href="pedido_coleta.php" class="nav-link scrollto"><i class="bx bx-user"></i> <span>Solicitar coleta</span></a></li>
-          <li><a href="pontos_coleta.php" class="nav-link scrollto"><i class="bx bx-book-content"></i> <span>Ponto de coleta</span></a></li>
-          <li><a href="calculadora.php" class="nav-link scrollto"><i class="bx bx-calculator"></i> <span>Calculadora Impacto</span></a></li>
-          <li><a href="editar_perfil.php" class="nav-link scrollto"><i class="bx bx-cog"></i> <span>Configurações</span></a></li>
-        </ul>
-      </nav><!-- .nav-menu -->
+        <li><a href="perfil_cliente.php" class="nav-link scrollto active"><i class="bx bx-home"></i> <span>Inicio</span></a></li>
+        <li><a href="#resume" class="nav-link scrollto"><i class="bx bx-file-blank"></i> <span>Pedidos de coleta</span></a></li>
+        <li><a href="pedido_coleta.php" class="nav-link scrollto"><i class="bx bx-user"></i> <span>Solicitar coleta</span></a></li>
+        <li><a href="pontos_coleta.php" class="nav-link scrollto"><i class="bx bx-book-content"></i> <span>Ponto de coleta</span></a></li>
+        <li><a href="calculadora.php" class="nav-link scrollto"><i class="bx bx-calculator"></i> <span>Calculadora Impacto</span></a></li>
+        <li><a href="editar_perfil.php" class="nav-link scrollto"><i class="bx bx-cog"></i> <span>Configurações</span></a></li>
+      </ul>
+    </nav><!-- .nav-menu -->
+  </div>
+</header><!-- End Header -->
+
+<main id="main">
+
+  <!-- ======= Breadcrumbs ======= -->
+  <section id="breadcrumbs" class="breadcrumbs">
+    <div class="container">
+
+      <div class="d-flex justify-content-between align-items-center">
+       <h2>Atualizar cadastro</h2>
+       <ol>
+        <li><a href="perfil_cliente.php">Inicio</a></li>
+        <li><a href="index.php?logout=true">Sair</a></li>
+      </ol>
     </div>
-  </header><!-- End Header -->
 
-  <main id="main">
-
-    <!-- ======= Breadcrumbs ======= -->
-    <section id="breadcrumbs" class="breadcrumbs">
-      <div class="container">
-
-        <div class="d-flex justify-content-between align-items-center">
-           <h2>Atualizar cadastro</h2>
-          <ol>
-            <li><a href="perfil_cliente.php">Inicio</a></li>
-           <li><a href="index.php?logout=true">Sair</a></li>
-          </ol>
-        </div>
-
-      </div>
-    </section><!-- End Breadcrumbs -->
+  </div>
+</section><!-- End Breadcrumbs -->
 <body>
   <div class="container mt-5">
     <div class="row justify-content-center">
@@ -158,7 +124,8 @@ if ($result->num_rows > 0) {
           <div class="card-header bg-success text-white text-center">
             <h4>Atualizar Dados</h4>
           </div>
-          <div class="card-body">
+          <!--verifica se existe uma variável de sessão chamada 'mensagem' usando isset($_SESSION['mensagem']). Se essa variável de sessão existir, seu valor é impresso (echo $_SESSION['mensagem']) e em seguida a variável de sessão é removida (unset($_SESSION['mensagem'])).-->
+          <div class="card-body"> 
             <?php
             if(isset($_SESSION['mensagem'])) {
               echo $_SESSION['mensagem'];
@@ -189,39 +156,38 @@ if ($result->num_rows > 0) {
                 <input type="text" name="cidade" id="cidade" class="form-control" value="<?php echo $usuarios['cidade']; ?>" required>
               </div>
               <div class="form-group">
-    <label for="estado">Estado</label>
-    <select id="estado" name="estado" class="form-control" required>
-        <option selected>Escolher...</option>
-        <option <?php echo ($usuarios['estado'] == 'AC') ? 'selected' : ''; ?>>AC</option>
-        <option <?php echo ($usuarios['estado'] == 'AL') ? 'selected' : ''; ?>>AL</option>
-        <option <?php echo ($usuarios['estado'] == 'AP') ? 'selected' : ''; ?>>AP</option>
-        <option <?php echo ($usuarios['estado'] == 'AM') ? 'selected' : ''; ?>>AM</option>
-        <option <?php echo ($usuarios['estado'] == 'BA') ? 'selected' : ''; ?>>BA</option>
-        <option <?php echo ($usuarios['estado'] == 'CE') ? 'selected' : ''; ?>>CE</option>
-        <option <?php echo ($usuarios['estado'] == 'DF') ? 'selected' : ''; ?>>DF</option>
-        <option <?php echo ($usuarios['estado'] == 'ES') ? 'selected' : ''; ?>>ES</option>
-        <option <?php echo ($usuarios['estado'] == 'GO') ? 'selected' : ''; ?>>GO</option>
-        <option <?php echo ($usuarios['estado'] == 'MA') ? 'selected' : ''; ?>>MA</option>
-        <option <?php echo ($usuarios['estado'] == 'MT') ? 'selected' : ''; ?>>MT</option>
-        <option <?php echo ($usuarios['estado'] == 'MS') ? 'selected' : ''; ?>>MS</option>
-        <option <?php echo ($usuarios['estado'] == 'MG') ? 'selected' : ''; ?>>MG</option>
-        <option <?php echo ($usuarios['estado'] == 'PA') ? 'selected' : ''; ?>>PA</option>
-        <option <?php echo ($usuarios['estado'] == 'PB') ? 'selected' : ''; ?>>PB</option>
-        <option <?php echo ($usuarios['estado'] == 'PR') ? 'selected' : ''; ?>>PR</option>
-        <option <?php echo ($usuarios['estado'] == 'PE') ? 'selected' : ''; ?>>PE</option>
-        <option <?php echo ($usuarios['estado'] == 'PI') ? 'selected' : ''; ?>>PI</option>
-        <option <?php echo ($usuarios['estado'] == 'RJ') ? 'selected' : ''; ?>>RJ</option>
-        <option <?php echo ($usuarios['estado'] == 'RN') ? 'selected' : ''; ?>>RN</option>
-        <option <?php echo ($usuarios['estado'] == 'RS') ? 'selected' : ''; ?>>RS</option>
-        <option <?php echo ($usuarios['estado'] == 'RO') ? 'selected' : ''; ?>>RO</option>
-        <option <?php echo ($usuarios['estado'] == 'RR') ? 'selected' : ''; ?>>RR</option>
-        <option <?php echo ($usuarios['estado'] == 'SC') ? 'selected' : ''; ?>>SC</option>
-        <option <?php echo ($usuarios['estado'] == 'SP') ? 'selected' : ''; ?>>SP</option>
-        <option <?php echo ($usuarios['estado'] == 'SE') ? 'selected' : ''; ?>>SE</option>
-        <option <?php echo ($usuarios['estado'] == 'TO') ? 'selected' : ''; ?>>TO</option>
-    </select>
-</div>
-
+                <label for="estado">Estado</label>
+                <select id="estado" name="estado" class="form-control" required>
+                  <option selected>Escolher...</option>
+                  <option <?php echo ($usuarios['estado'] == 'AC') ? 'selected' : ''; ?>>AC</option>
+                  <option <?php echo ($usuarios['estado'] == 'AL') ? 'selected' : ''; ?>>AL</option>
+                  <option <?php echo ($usuarios['estado'] == 'AP') ? 'selected' : ''; ?>>AP</option>
+                  <option <?php echo ($usuarios['estado'] == 'AM') ? 'selected' : ''; ?>>AM</option>
+                  <option <?php echo ($usuarios['estado'] == 'BA') ? 'selected' : ''; ?>>BA</option>
+                  <option <?php echo ($usuarios['estado'] == 'CE') ? 'selected' : ''; ?>>CE</option>
+                  <option <?php echo ($usuarios['estado'] == 'DF') ? 'selected' : ''; ?>>DF</option>
+                  <option <?php echo ($usuarios['estado'] == 'ES') ? 'selected' : ''; ?>>ES</option>
+                  <option <?php echo ($usuarios['estado'] == 'GO') ? 'selected' : ''; ?>>GO</option>
+                  <option <?php echo ($usuarios['estado'] == 'MA') ? 'selected' : ''; ?>>MA</option>
+                  <option <?php echo ($usuarios['estado'] == 'MT') ? 'selected' : ''; ?>>MT</option>
+                  <option <?php echo ($usuarios['estado'] == 'MS') ? 'selected' : ''; ?>>MS</option>
+                  <option <?php echo ($usuarios['estado'] == 'MG') ? 'selected' : ''; ?>>MG</option>
+                  <option <?php echo ($usuarios['estado'] == 'PA') ? 'selected' : ''; ?>>PA</option>
+                  <option <?php echo ($usuarios['estado'] == 'PB') ? 'selected' : ''; ?>>PB</option>
+                  <option <?php echo ($usuarios['estado'] == 'PR') ? 'selected' : ''; ?>>PR</option>
+                  <option <?php echo ($usuarios['estado'] == 'PE') ? 'selected' : ''; ?>>PE</option>
+                  <option <?php echo ($usuarios['estado'] == 'PI') ? 'selected' : ''; ?>>PI</option>
+                  <option <?php echo ($usuarios['estado'] == 'RJ') ? 'selected' : ''; ?>>RJ</option>
+                  <option <?php echo ($usuarios['estado'] == 'RN') ? 'selected' : ''; ?>>RN</option>
+                  <option <?php echo ($usuarios['estado'] == 'RS') ? 'selected' : ''; ?>>RS</option>
+                  <option <?php echo ($usuarios['estado'] == 'RO') ? 'selected' : ''; ?>>RO</option>
+                  <option <?php echo ($usuarios['estado'] == 'RR') ? 'selected' : ''; ?>>RR</option>
+                  <option <?php echo ($usuarios['estado'] == 'SC') ? 'selected' : ''; ?>>SC</option>
+                  <option <?php echo ($usuarios['estado'] == 'SP') ? 'selected' : ''; ?>>SP</option>
+                  <option <?php echo ($usuarios['estado'] == 'SE') ? 'selected' : ''; ?>>SE</option>
+                  <option <?php echo ($usuarios['estado'] == 'TO') ? 'selected' : ''; ?>>TO</option>
+                </select>
+              </div>
               <div class="form-group">
                 <label for="logradouro">Logradouro</label>
                 <input type="text" name="logradouro" id="logradouro" class="form-control" value="<?php echo $usuarios['logradouro']; ?>" required>
@@ -246,14 +212,14 @@ if ($result->num_rows > 0) {
               <br><br>
               <button type="button" onclick="confirmarDeletar()">Deletar Conta</button>
 
-</main>
-</body>
-<script>
+            </main>
+          </body>
 
-function confirmarDeletar() {
-  if (confirm("Tem certeza que deseja deletar este usuário?")) {
-    window.location.href = "delete_usuario.php?idusuarios=<?php echo $idusuarios ?>";
-  }
-}
-</script>
-</html>
+          <script>
+            function confirmarDeletar() {
+              if (confirm("Tem certeza que deseja deletar este usuário?")) {
+                window.location.href = "delete_usuario.php?idusuarios=<?php echo $idusuarios ?>";
+              }
+            }
+          </script>
+          </html>

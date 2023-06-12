@@ -1,3 +1,4 @@
+<!-- Formulario Login -->
 <? php
 require 'conexao.php';
 require_once('teste_login.php');
@@ -25,9 +26,9 @@ require_once('teste_login.php');
 					<div class="wrap d-md-flex">
 						<div class="text-wrap p-4 p-lg-5 text-center d-flex align-items-center order-md-last" style="background: linear-gradient(45deg, #004225, #008000);">
 							<div class="text w-100" >
-								 <h1 ><img src="images/reCiclo-1.png" alt="" /><span></span></h1>
+								<h1 ><img src="images/reCiclo-1.png" alt="" /><span></span></h1>
 								<p>Ainda não possui uma conta?</p>
-								<a href="cadastro_pt1.html" class="btn btn-white btn-outline-white">Inscrever-se</a>
+								<a href="cadastro_usuario.php" class="btn btn-white btn-outline-white">Inscrever-se</a>
 							</div>
 						</div>
 						<div class="login-wrap p-4 p-lg-5">

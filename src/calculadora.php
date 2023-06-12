@@ -1,48 +1,6 @@
+<!-- Calculadora de Impacto = medida do impacto ambiental causado -->
 <?php
-session_start();
-include_once('conexao.php');
-
-//clicou no link "Sair"
-if (isset($_GET['logout'])) {
-    session_destroy();
-    //Redireciona index
-    header("Location: index.php");
-    exit;
-}
-
-if (isset($_SESSION['idusuarios'])) {
-  $idusuarios = $_SESSION['idusuarios'];
-
-  $stmt = $conexao->prepare("SELECT * FROM usuarios WHERE idusuarios = ?");
-  $stmt->bind_param("i", $idusuarios);
-  $stmt->execute();
-  $result = $stmt->get_result();
-
-
-if ($result->num_rows > 0) {
-    $usuarios = $result->fetch_assoc();
-    
-    if ($usuarios !== null) {
-        $idusuarios = $usuarios['idusuarios'];
-        $name = $usuarios['name'];
-        $email = $usuarios['email'];
-        $cpf = $usuarios['cpf'];
-        $dataNasc = $usuarios['dataNasc'];
-        $cidade = $usuarios['cidade'];
-        $estado = $usuarios['estado'];
-        $logradouro = $usuarios['logradouro'];
-        $numeroN = $usuarios['numeroN'];
-        $bairro = $usuarios['bairro'];
-        $cep = $usuarios['cep'];
-    } else {
-        echo "Dados do usuário não encontrados.";
-        exit;
-    }
-} else {
-    echo "Usuário não encontrado.";
-    exit;
-}
-}
+include_once('verificar_sessao.php');
 ?>
 
 <!DOCTYPE html>
@@ -72,7 +30,7 @@ if ($result->num_rows > 0) {
   <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
 
   <!-- Template Main CSS File -->
-  <link href="assets/css/style2.css" rel="stylesheet">
+  <link href="assets/css/style2.css" rel="stylesheet"> 
 
   <!-- =======================================================
   * Template Name: iPortfolio
@@ -84,27 +42,27 @@ if ($result->num_rows > 0) {
 </head>
 
 <body>
-<header>
+  <header>
     <div class="header-top">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-4 col-xs-12 col-sm-5 haeder-top-date">
-         
-        </div>
+      <div class="container">
+        <div class="row">
+          <div class="col-md-4 col-xs-12 col-sm-5 haeder-top-date">
 
-        <div class="col-md-4 col-xs-12 col-sm-2 text-center">
-          <a href="index.php"><img src="images/reCiclo-1.png" alt="" /></a>
-        </div>
-        <div class="col-md-4 col-xs-12 col-sm-5">
-          <div class="header-top-nav">
-            <ul class="list-unstyled">      
-            </ul>
+          </div>
+
+          <div class="col-md-4 col-xs-12 col-sm-2 text-center">
+            <a href="index.php"><img src="images/reCiclo-1.png" alt="" /></a>
+          </div>
+          <div class="col-md-4 col-xs-12 col-sm-5">
+            <div class="header-top-nav">
+              <ul class="list-unstyled">      
+              </ul>
+            </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
-</header>
+  </header>
 
   <!-- ======= Mobile nav toggle button ======= -->
   <i class="bi bi-list mobile-nav-toggle d-xl-none"></i>
@@ -115,10 +73,10 @@ if ($result->num_rows > 0) {
 
       <div class="profile">
         <img src="assets/img/profile-img.jpg" alt="" class="img-fluid rounded-circle">
-       <h1 class="text-light">
-        <a href="index.html" value="<?php echo $usuarios['name']; ?>">
-          <?php echo $usuarios['name']; ?>
-        </a>
+        <h1 class="text-light">
+          <a href="index.html" value="<?php echo $usuarios['name']; ?>">
+            <?php echo $usuarios['name']; ?>
+          </a>
         </h1>
 
         <div class="social-links mt-3 text-center">
@@ -131,34 +89,36 @@ if ($result->num_rows > 0) {
 
       <nav id="navbar" class="nav-menu navbar">
        <ul>
-          <li><a href="perfil_cliente.php" class="nav-link scrollto active"><i class="bx bx-home"></i> <span>Inicio</span></a></li>
-          <li><a href="#resume" class="nav-link scrollto"><i class="bx bx-file-blank"></i> <span>Pedidos de coleta</span></a></li>
-          <li><a href="pedido_coleta.php" class="nav-link scrollto"><i class="bx bx-user"></i> <span>Solicitar coleta</span></a></li>
-          <li><a href="pontos_coleta.php" class="nav-link scrollto"><i class="bx bx-book-content"></i> <span>Ponto de coleta</span></a></li>
-          <li><a href="calculadora.php" class="nav-link scrollto"><i class="bx bx-calculator"></i> <span>Calculadora Impacto</span></a></li>
-          <li><a href="editar_perfil.php" class="nav-link scrollto"><i class="bx bx-cog"></i> <span>Configurações</span></a></li>
-        </ul>
-      </nav><!-- .nav-menu -->
+        <li><a href="perfil_cliente.php" class="nav-link scrollto active"><i class="bx bx-home"></i> <span>Inicio</span></a></li>
+        <li><a href="#resume" class="nav-link scrollto"><i class="bx bx-file-blank"></i> <span>Pedidos de coleta</span></a></li>
+        <li><a href="pedido_coleta.php" class="nav-link scrollto"><i class="bx bx-user"></i> <span>Solicitar coleta</span></a></li>
+        <li><a href="pontos_coleta.php" class="nav-link scrollto"><i class="bx bx-book-content"></i> <span>Ponto de coleta</span></a></li>
+        <li><a href="calculadora.php" class="nav-link scrollto"><i class="bx bx-calculator"></i> <span>Calculadora Impacto</span></a></li>
+        <li><a href="editar_perfil.php" class="nav-link scrollto"><i class="bx bx-cog"></i> <span>Configurações</span></a></li>
+      </ul>
+    </nav><!-- .nav-menu -->
+  </div>
+</header><!-- End Header -->
+
+<main id="main">
+
+  <!-- ======= Breadcrumbs ======= -->
+  <section id="breadcrumbs" class="breadcrumbs">
+    <div class="container">
+
+      <div class="d-flex justify-content-between align-items-center">
+       <h2>Calculadora de impacto </h2>
+       <ol>
+        <li><a href="perfil_cliente.php">Inicio</a></li>
+        <li><a href="index.php?logout=true">Sair</a></li>
+      </ol>
     </div>
-  </header><!-- End Header -->
-
-  <main id="main">
-
-    <!-- ======= Breadcrumbs ======= -->
-    <section id="breadcrumbs" class="breadcrumbs">
-      <div class="container">
-
-        <div class="d-flex justify-content-between align-items-center">
-           <h2>Calculadora de impacto </h2>
-          <ol>
-            <li><a href="perfil_cliente.php">Inicio</a></li>
-           <li><a href="index.php?logout=true">Sair</a></li>
-          </ol>
-        </div>
-
-      </div>
-    </section><!-- End Breadcrumbs -->
+  </div>
+</section><!-- End Breadcrumbs -->
 <body>
+  <div>
+    <p>Descubra o impacto ambiental dos materiais que você utiliza com nossa calculadora! Encontre maneiras de reduzir esses impactos e faça a diferença no cuidado com o meio ambiente. Pequenas ações podem ter um grande impacto!</p> 
+  </div>
   <div class="container mt-5">
     <div class="row justify-content-center">
       <div class="col-lg-6 col-md-8">
@@ -167,34 +127,37 @@ if ($result->num_rows > 0) {
             <h4>Calculadora de Impacto Ambiental</h4>
           </div>
           <div class="card-body">
+           <form action="" method="post">
+            <div class="form-group">
+              <label for="plastico">Quantidade de plástico (em kg):</label>
+              <input type="number" step="0.01" min="0" class="form-control" id="plastico" name="plastico" required>
+            </div>
 
-             <form action="" method="post">
-      <div class="form-group">
-        <label for="plastico">Quantidade de plástico (em kg):</label>
-        <input type="number" step="0.01" min="0" class="form-control" id="plastico" name="plastico" required>
+            <div class="form-group">
+              <label for="vidro">Quantidade de vidro (em kg):</label>
+              <input type="number" step="0.01" min="0" class="form-control" id="vidro" name="vidro" required>
+            </div>
+
+            <div class="form-group">
+              <label for="metal">Quantidade de metal (em kg):</label>
+              <input type="number" step="0.01" min="0" class="form-control" id="metal" name="metal" required>
+            </div>
+
+            <div class="form-group">
+              <label for="metal">Quantidade de papel (em kg):</label>
+              <input type="number" step="0.01" min="0" class="form-control" id="papel" name="papel" required>
+            </div>
+            <div class="text-center">
+              <button type="submit" class="btn btn-success btn-block">Calcular</button>
+            </div>
+
+          </form>
+        </div>
+
+
       </div>
-
-      <div class="form-group">
-        <label for="vidro">Quantidade de vidro (em kg):</label>
-        <input type="number" step="0.01" min="0" class="form-control" id="vidro" name="vidro" required>
-      </div>
-
-      <div class="form-group">
-        <label for="metal">Quantidade de metal (em kg):</label>
-        <input type="number" step="0.01" min="0" class="form-control" id="metal" name="metal" required>
-      </div>
-
-      <div class="form-group">
-        <label for="metal">Quantidade de papel (em kg):</label>
-        <input type="number" step="0.01" min="0" class="form-control" id="papel" name="papel" required>
-      </div>
-
-      <button type="submit" class="btn btn-success btn-block">Calcular</button>
-    </form>
+    </div>
   </div>
-</div>
-</div>
-</div>
 </div>
 </body>
 
@@ -202,47 +165,49 @@ if ($result->num_rows > 0) {
 //Impacto = (Quantidade de plástico x Energia necessária para produzir 1 kg de plástico x Fator de emissão de CO2 da energia utilizada x Tempo de decomposição do plástico no meio ambiente) / 1000
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    $plastico = $_POST['plastico'];
-    $metal = $_POST['metal'];
-    $vidro = $_POST['vidro'];
-    $papel = $_POST['papel'];
+  $plastico = $_POST['plastico'];
+  $metal = $_POST['metal'];
+  $vidro = $_POST['vidro'];
+  $papel = $_POST['papel'];
 
-    $energiaPlastico = 50; 
-    $fatorCO2Plastico = 3.14; 
-    $tempoDecomposicaoPlastico = 450; 
+  $energiaPlastico = 50; 
+  $fatorCO2Plastico = 3.14; 
+  $tempoDecomposicaoPlastico = 450; 
 
-    $energiaMetal = 200; 
-    $fatorCO2Metal = 7.84; 
-    $tempoDecomposicaoMetal = 500;
+  $energiaMetal = 200; 
+  $fatorCO2Metal = 7.84; 
+  $tempoDecomposicaoMetal = 500;
 
-    $energiaVidro = 100; 
-    $fatorCO2Vidro = 2.36; 
-    $tempoDecomposicaoVidro = 4000;
+  $energiaVidro = 100; 
+  $fatorCO2Vidro = 2.36; 
+  $tempoDecomposicaoVidro = 4000;
 
-    $energiaPapel = 10; 
-    $fatorCO2Papel = 0.8; 
-    $tempoDecomposicaoPapel = 2;
+  $energiaPapel = 10; 
+  $fatorCO2Papel = 0.8; 
+  $tempoDecomposicaoPapel = 2;
 
     //Calculo dos impactos
-    $impactoPlastico = ($plastico * $energiaPlastico * $fatorCO2Plastico * $tempoDecomposicaoPlastico) / 1000;
+  $impactoPlastico = ($plastico * $energiaPlastico * $fatorCO2Plastico * $tempoDecomposicaoPlastico) / 1000;
 
-    $impactoMetal = ($metal * $energiaMetal * $fatorCO2Metal * $tempoDecomposicaoMetal) / 1000;
+  $impactoMetal = ($metal * $energiaMetal * $fatorCO2Metal * $tempoDecomposicaoMetal) / 1000;
 
-    $impactoVidro = ($vidro * $energiaVidro * $fatorCO2Vidro * $tempoDecomposicaoVidro) / 1000;
+  $impactoVidro = ($vidro * $energiaVidro * $fatorCO2Vidro * $tempoDecomposicaoVidro) / 1000;
 
 
-    $impactoPapel = ($papel * $energiaPapel * $fatorCO2Papel * $tempoDecomposicaoPapel) / 1000;
+  $impactoPapel = ($papel * $energiaPapel * $fatorCO2Papel * $tempoDecomposicaoPapel) / 1000;
 
-   // Resultados
-    echo "<h3>Impacto Ambiental:</h3>";
-    echo "<ul>";
-    echo "<li>Impacto do plástico: " . number_format($impactoPlastico, 2) . " toneladas de CO2</li>";
-    echo "<li>Impacto do metal: " . number_format($impactoMetal, 2) . " toneladas de CO2</li>";
-    echo "<li>Impacto do vidro: " . number_format($impactoVidro, 2) . " toneladas de CO2</li>";
-    echo "<li>Impacto do papel: " . number_format($impactoPapel, 2) . "toneladas de CO2 </li>";
-     echo "</ul>";
+// Resultados
+  echo '<h3 style="text-align: center; color: darkgreen;">Impacto Ambiental:</h3>';
+  echo '<ul style="text-align: center;">';
+  echo '<li><span class="item-label">Impacto do plástico:</span> <span class="item-value">' . number_format($impactoPlastico, 2) . ' toneladas de CO2</span></li>';
+  echo '<li><span class="item-label">Impacto do metal:</span> <span class="item-value">' . number_format($impactoMetal, 2) . ' toneladas de CO2</span></li>';
+  echo '<li><span class="item-label">Impacto do vidro:</span> <span class="item-value">' . number_format($impactoVidro, 2) . ' toneladas de CO2</span></li>';
+  echo '<li><span class="item-label">Impacto do papel:</span> <span class="item-value">' . number_format($impactoPapel, 2) . ' toneladas de CO2</span></li>';
+  echo '</ul>';
 
-    }
+
+}
 ?>
 </main>
+
 </html>

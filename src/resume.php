@@ -1,3 +1,4 @@
+<!--//RESUMO DOS PEDIDOS DE TODOS USUARIOS que estao no banco são exibidos apos login na aba "Pedidos Coleta" -->
 <?php
 session_start();
 include_once('conexao.php');
@@ -93,54 +94,53 @@ if ($result->num_rows > 0) {
 </head>
 
 <body>
-<header>
+  <header>
     <div class="header-top">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-4 col-xs-12 col-sm-5 haeder-top-date">
-         
-        </div>
+      <div class="container">
+        <div class="row">
+          <div class="col-md-4 col-xs-12 col-sm-5 haeder-top-date">
+           
+          </div>
 
-        <div class="col-md-4 col-xs-12 col-sm-2 text-center">
-          <a href="index.php"><img src="images/reCiclo-1.png" alt="" /></a>
-        </div>
-        <div class="col-md-4 col-xs-12 col-sm-5">
-          <div class="header-top-nav">
-            <ul class="list-unstyled">      
-            </ul>
+          <div class="col-md-4 col-xs-12 col-sm-2 text-center">
+            <a href="index.php"><img src="images/reCiclo-1.png" alt="" /></a>
+          </div>
+          <div class="col-md-4 col-xs-12 col-sm-5">
+            <div class="header-top-nav">
+              <ul class="list-unstyled">      
+              </ul>
+            </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
-</header>
+  </header>
+  <body>
 
-<body>
+    <!-- ======= Mobile nav toggle button ======= -->
+    <i class="bi bi-list mobile-nav-toggle d-xl-none"></i>
 
-  <!-- ======= Mobile nav toggle button ======= -->
-  <i class="bi bi-list mobile-nav-toggle d-xl-none"></i>
+    <!-- ======= Header ======= -->
+    <header id="header">
+      <div class="d-flex flex-column">
 
-  <!-- ======= Header ======= -->
-  <header id="header">
-    <div class="d-flex flex-column">
-
-      <div class="profile">
-        <img src="assets/img/profile-img.jpg" alt="" class="img-fluid rounded-circle">
-             <h1 class="text-light">
-        <a href="index.html" value="<?php echo $usuarios['name']; ?>">
-          <?php echo $usuarios['name']; ?>
-        </a>
-        </h1>
-        <div class="social-links mt-3 text-center">
-          <a href="#" class="twitter"><i class="bx bxl-twitter"></i></a>
-          <a href="#" class="facebook"><i class="bx bxl-facebook"></i></a>
-          <a href="#" class="instagram"><i class="bx bxl-instagram"></i></a>
-          <a href="#" class="linkedin"><i class="bx bxl-linkedin"></i></a>
+        <div class="profile">
+          <img src="assets/img/profile-img.jpg" alt="" class="img-fluid rounded-circle">
+          <h1 class="text-light">
+            <a href="index.html" value="<?php echo $usuarios['name']; ?>">
+              <?php echo $usuarios['name']; ?>
+            </a>
+          </h1>
+          <div class="social-links mt-3 text-center">
+            <a href="#" class="twitter"><i class="bx bxl-twitter"></i></a>
+            <a href="#" class="facebook"><i class="bx bxl-facebook"></i></a>
+            <a href="#" class="instagram"><i class="bx bxl-instagram"></i></a>
+            <a href="#" class="linkedin"><i class="bx bxl-linkedin"></i></a>
+          </div>
         </div>
-      </div>
 
-      <nav id="navbar" class="nav-menu navbar">
-       <ul>
+        <nav id="navbar" class="nav-menu navbar">
+         <ul>
           <li><a href="perfil_cliente.php" class="nav-link scrollto active"><i class="bx bx-home"></i> <span>Inicio</span></a></li>
           <li><a href="resume.php" class="nav-link scrollto"><i class="bx bx-file-blank"></i> <span>Pedidos de coleta</span></a></li>
           <li><a href="pedido_coleta.php" class="nav-link scrollto"><i class="bx bx-user"></i> <span>Solicitar coleta</span></a></li>
@@ -153,20 +153,24 @@ if ($result->num_rows > 0) {
   </header><!-- End Header -->
 
   <main id="main">
-<!-- End Breadcrumbs -->
+    <!-- End Breadcrumbs -->
     <section id="breadcrumbs" class="breadcrumbs">
       <div class="container">
 
         <div class="d-flex justify-content-between align-items-center">
-           <h2>Pedidos de coleta</h2>
-          <ol>
-            <li><a href="perfil_cliente.php">Inicio</a></li>
-           <li><a href="index.php?logout=true">Sair</a></li>
-          </ol>
-        </div>
-
+         <h2>Pedidos de coleta</h2>
+         <ol>
+          <li><a href="perfil_cliente.php">Inicio</a></li>
+          <li><a href="index.php?logout=true">Sair</a></li>
+        </ol>
       </div>
-    </section><!-- End Breadcrumbs -->
+
+    </div>
+  </section><!-- End Breadcrumbs -->
+  <div>
+    <p>Aqui, você tem o poder de recolher resíduos cadastrados por outros usuários. Pronto para se tornar um verdadeiro salvador ambiental e dar uma nova vida a esses materiais? Vamos lá, o mundo está contando com você!</p>
+  </div>
+
 
 <section>
     <div class="container">
@@ -180,7 +184,7 @@ if ($result->num_rows > 0) {
                                 <th>Produto</th>
                                 <th>Quantidade (aprox. kg)</th>
                                 <th>Descrição</th>
-                                <th>Midia</th>
+                                <th>telefone</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -195,7 +199,8 @@ if ($result->num_rows > 0) {
                                     echo "<td>" . $row['produto'] . "</td>";
                                     echo "<td>" . $row['quantidade'] . "</td>";
                                     echo "<td>" . $row['descricao'] . "</td>";
-                                    echo "<td><img src='data:image/jpeg;base64," . base64_encode($row['midia']) . "' width='100' height='100'></td>";
+                                    echo "<td>" . $row['telefone'] . "</td>";
+                                   // echo "<td><img src='data:image/jpeg;base64," . base64_encode($row['midia']) . "' width='100' height='100'></td>";
                                   
                                     echo "<td><button class='btn btn-primary' onclick='solicitar(" . $row['id_pedido'] . ")'>Solicitar</button></td>";
                                     echo "</tr>";
@@ -212,7 +217,6 @@ if ($result->num_rows > 0) {
     </div>
 </section>
 
-
   <script>
     function solicitar(idPedido) {
       var xhr = new XMLHttpRequest();
@@ -226,11 +230,11 @@ if ($result->num_rows > 0) {
       };
       xhr.send();
     }
-
   </script>
 
 
   </main>
+
 
     <!-- Vendor JS Files -->
   <script src="assets/vendor/purecounter/purecounter_vanilla.js"></script>

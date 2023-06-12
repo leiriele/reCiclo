@@ -1,3 +1,4 @@
+<!-- Exclui pedido no banco -->
 <?php
 if (!empty($_GET['id'])) {
     include_once('conexao.php');
